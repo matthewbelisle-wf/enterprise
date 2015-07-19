@@ -1,0 +1,36 @@
+[unix_http_server]
+file=/tmp/supervisor.sock
+
+[supervisord]
+pidfile=/tmp/supervisord.pid
+nodaemon=true
+
+[program:web]
+command=./codecov web --port 888%(process_num)d
+process_name=web_%(process_num)d
+redirect_stderr=true
+autorestart=true
+stdout_logfile=logs/access.log
+stderr_logfile=logs/error.log
+numprocs=<%= ENV['WEB_PROCESSES'] || 1 %>  ; web processes per dyno (recommend 1)
+priority=1
+
+[program:nginx]
+command=bash -c "sleep 4 && exec bin/nginx -p . -c config/nginx.conf"  ; sleep so we can wait for all processes to init
+process_name=nginx_%(process_num)d
+redirect_stderr=true
+autorestart=true
+stdout_logfile=logs/access.log
+stderr_logfile=logs/error.log
+numprocs=<%= ENV['NGINX_PROCESSES'] || 1 %>  ; nginx cores running per dyno (recommend 1)
+priority=2
+
+[program:worker]
+command=./codecov worker
+process_name=worker_%(process_num)d
+redirect_stderr=true
+autorestart=true
+stdout_logfile=logs/access.log
+stderr_logfile=logs/error.log
+numprocs=<%= ENV['WORKER_PROCESSES'] || 1 %>  ; worker processes per dyno (recommend 1)
+priority=3
