@@ -13,7 +13,7 @@ Codecov Enterprise is for customers whom wish to utilize Codecov in a **private 
 
 # Overview
 - [Instructions](#instructions)
-  - [Deploy on Heroku](#deploy-on-heroku)
+  - [Deploy on Heroku](https://github.com/codecov/enterprise/blob/master/heroku.md)
   - Deploy with Docker `coming soon`
   - [Deploy Manually on Linux](#deploy-manually-on-linux)
 - [Upgrading](#upgrading)
@@ -29,13 +29,8 @@ Codecov Enterprise is for customers whom wish to utilize Codecov in a **private 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 > After deployed please configure your environment
 
-```
-heroku config:set ENTERPRISE_COMPANY=:provided-by-codecov \
-                  ENTERPRISE_LICENSE=:provided-by-codecov \
-                  GITHUB_CLIENT_ID=:app-client-id \
-                  GITHUB_CLIENT_SECRET=:app-client-secret \
-                  GITHUB_ACCESS_TOKEN=:your-bot-access-token
-```
+Continue reading about [Deploying on Heroku](https://github.com/codecov/enterprise/blob/master/heroku.md)
+
 
 ## Deploy Manually on Linux
 Some Linux admin experience is required for manual deployment.
@@ -86,7 +81,7 @@ Please fill in the appropraite information when creating a Github app. For **Aut
 
 ### Heroku
 Set environment variables in Heroku through the cli via `heroku config:set ENTERPRISE_COMPANY=usa`. The `codecov.yml` is ignored.
-Please [see this file](https://github.com/codecov/enterprise/blob/master/heroku.config) for a full list of environment variables.
+Please [see this file](https://github.com/codecov/enterprise/blob/master/heroku.md#config) for a full list of environment variables.
 
 ### Using `codecov.yml`
 Details on environment variables are all found in the [`codecov.yml`](https://github.com/codecov/enterprise/blob/master/codecov.yml) file.

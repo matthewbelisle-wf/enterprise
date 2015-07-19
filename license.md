@@ -1,4 +1,4 @@
-### Codecov ENTERPRISE LICENSE AND SUPPORT AGREEMENT
+### Codecov Enterprise LICENSE AND SUPPORT AGREEMENT
 
 > Welcome to the Software License and Support Agreement (the "Agreement").
 
@@ -6,7 +6,7 @@
 
 1. **Definitions.** Here are some definitions we use in this Agreement. If you see a capitalized word that isn't listed here, it will be defined somewhere in the Agreement. (Unless it's the first word in a sentence, of course.)
 
-  - The "Agreement Effective Date" is the earlier of the date that you either click "I Accept" to the terms and conditions of this Agreement, or that you first place an order for the Software.
+  - The "Agreement Effective Date" is the earlier of the date that you either click "Deploy to Heroku", or clone the repository, or that you first place an order for the Software.
 
   - "Documentation" means any manuals, documentation and other supporting materials related to the Software that we generally provide to our customers. Documentation is considered part of the Software.
 
@@ -44,7 +44,7 @@
 
 6. **Support.**
 
-  - 6.1 *Support Times.* Provided that you've paid us the Fees you owe us, we'll provide you with technical support for the Software from 10am to 4pm Central Starndard Time , Monday through Friday, excluding national U.S. holidays. We currently only offer support via email (write to us at enterprise@codecov.io) or web-based ticketing (through https://github.com/codecov/enterprise/issues). You can contact our amazing support team to help answer your questions on installing and using the Software, identifying and verifying the causes of suspected errors in the Software, and helping you find workarounds for Software malfunctions. Though we'll do our best to respond to automated support requests, we typically need more information than an automated ticketing system can give us to solve your issue. Whenever possible, please initiate any support requests from a person or machine that our support team can interact with.
+  - 6.1 *Support Times.* Provided that you've paid us the Fees you owe us, we'll provide you with technical support for the Software from 9am to 5pm Central Starndard Time , Monday through Friday, excluding national U.S. holidays. We currently only offer support via email (write to us at enterprise@codecov.io) or web-based ticketing (through https://github.com/codecov/enterprise/issues). You can contact our amazing support team to help answer your questions on installing and using the Software, identifying and verifying the causes of suspected errors in the Software, and helping you find workarounds for Software malfunctions. Though we'll do our best to respond to automated support requests, we typically need more information than an automated ticketing system can give us to solve your issue. Whenever possible, please initiate any support requests from a person or machine that our support team can interact with.
 
   - 6.2 *Updates.* We'll make Updates available to you as we make them generally available to our other customers. They'll be available on the same secure website where you downloaded the Software and the License Key.
 
