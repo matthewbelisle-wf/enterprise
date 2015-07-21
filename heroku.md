@@ -50,11 +50,12 @@ GITHUB_GLOBAL_UPLOAD_TOKEN  # a secret string that is used as a global token for
 
 # Github Enterprise
 # ---------------------------------
-GITHUB_ENTERPRISE_URI                  # (required) the base url of your Github Enterprise ex. https://enterprise-hostname.com
+GITHUB_ENTERPRISE_URL                  # (required) the base url of your Github Enterprise ex. https://enterprise-hostname.com
 GITHUB_ENTERPRISE_CLIENT_ID            # (required) from https://github.com/settings/applications/new
 GITHUB_ENTERPRISE_CLIENT_SECRET        # (required) from https://github.com/settings/applications/new
 GITHUB_ENTERPRISE_ACCESS_TOKEN         # used to post comments, statuses, etc.
 GITHUB_ENTERPRISE_GLOBAL_UPLOAD_TOKEN  # a secret string that is used as a global token for uploading reports
+GITHUB_ENTERPRISE_API_URL              # (optional) the base url of your Github Enterprise API defaults to `GITHUB_ENTERPRISE_URL + "/api/v3"`
 
 # Bitbucket
 # ---------------------------------

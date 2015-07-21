@@ -2,13 +2,14 @@
   "name": "Codecov Enterprise",
   "description": "Continuous Code Coverage - Privately Hosted Enterprise Edition",
   "repository": "https://github.com/codecov/enterprise",
-  "logo": "https://d234q63orb21db.cloudfront.net/media/images/logo.png",
+  "logo": "https://d234q63orb21db.cloudfront.net/media/images/pink.png",
   "keywords": ["coverage", "continuous", "code analysis"],
   "website": "https://codecov.io",
   "success_url": "/",
   "addons": [
     "heroku-postgresql:hobby-dev",
-    "rediscloud"
+    "rediscloud",
+    "mailgun"
   ],
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-multi.git",
@@ -27,10 +28,6 @@
     "GITHUB_CLIENT_SECRET": {
       "required": true,
       "description": "github client secret: https://github.com/settings/applications/new"
-    },
-    "GITHUB_ACCESS_TOKEN": {
-      "required": true,
-      "description": "Used to make Github API requests including submitting comments and statuses."
     },
     "GITHUB_ORGANIZATIONS": {
       "required": false,

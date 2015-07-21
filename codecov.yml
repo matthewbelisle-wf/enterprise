@@ -38,11 +38,12 @@ github:
 # Github Enterprise
 # ---------------------------------
 github_enterprise:
-    uri: null                     # (required) the base url of your Github Enterprise ex. https://enterprise-hostname.com
+    url: null                     # (required) the base url of your Github Enterprise ex. https://enterprise-hostname.com
     client_id: null               # (required) from https://github.com/settings/applications/new
     client_secret: null           # (required) from https://github.com/settings/applications/new
     access_token: null            # used to post comments, statuses, etc.
     global_upload_token: null     # a secret string that is used as a global token for uploading reports
+    api_url: null                 # (optional) the base url of your Github Enterprise API defaults to `url + "/api/v3"`
 
 # Bitbucket
 # ---------------------------------
