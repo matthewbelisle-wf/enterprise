@@ -1,7 +1,10 @@
-# Codecov Enterprise
-# ==================
-# Learn more at https://github.com/codecov/enterprise/wiki/Setup-codecov.yml
-# Thank you! <3 the Codecov Team
+# ========================================================================================
+#                 Codecov Enterprise: Sample codecov.yml config file
+# ========================================================================================
+#                      **IMPORTANT** This is a SAMPLE file only
+#      Call `codecov config` to generate your codecov.yml found at ~/.codecov/codecov.yml
+#          Learn more at https://github.com/codecov/enterprise/wiki/Setup-codecov.yml
+#                            Thank you! <3 the Codecov Team
 
 setup:
     enterprise_company: null      # (required) provided by Codecov staff
