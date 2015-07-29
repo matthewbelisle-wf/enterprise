@@ -13,10 +13,6 @@
   ],
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-multi.git",
-    "ENTERPRISE_COMPANY": {
-      "required": true,
-      "description": "(required) Your company id provided by Codecov"
-    },
     "ENTERPRISE_LICENSE": {
       "required": true,
       "description": "(required) License key provided by Codecov"
