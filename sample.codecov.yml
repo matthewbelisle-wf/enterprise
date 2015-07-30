@@ -12,6 +12,9 @@ setup:
     guest_access: false           # allow non-logged in users to view public repos
     loglvl: WARNING               # info, debug or warning
     cookie_secret: null           # (required) string used to encrypt secure cookies
+    delay_policy: null            # change the default behavior of the delayed notification queue
+    notify_policy: passed         # (passed) Only run notifications if all ci builds pass. Default. Github only.
+                                  # (first) only run notifications on first build received per commit
     media_url: null               # (default) static files are served from Codecov's Amazon S3
                                   # (localhost) set value to 'localhost' to serve js/css/images locally
                                   # (advanced) set value to url to privatly hosting static files for advanced usage
@@ -23,6 +26,7 @@ services:
     logentries_token: null        # logging product interactions: https://logentries.com
     mailgun_endpoint: null        # Mailgun url to send system emails from
     google_analytics_key: null    # front-end tracking
+    ci: null                      # list of ci domains to monitor builds
     aws:
         access_key_id: null       #
         secret_access_key: null   #

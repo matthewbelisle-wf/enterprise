@@ -11,15 +11,24 @@
     "rediscloud",
     "mailgun"
   ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-multi.git"
+    }
+  ],
   "env": {
-    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-multi.git",
     "ENTERPRISE_COMPANY": {
       "required": true,
-      "description": "(required) Your company id provided by Codecov"
+      "value": "trial",
+      "description": "Company ID provided by Codecov staff."
     },
     "ENTERPRISE_LICENSE": {
       "required": true,
-      "description": "(required) License key provided by Codecov"
+      "description": "License key provided by Codecov staff."
+    },
+    "CODECOV_URL": {
+      "required": true,
+      "description": "Please type in the Heroku url for this app. Ex. https://your-enterprise.herokuapp.com"
     },
     "GITHUB_CLIENT_ID": {
       "required": true,
@@ -31,7 +40,7 @@
     },
     "GITHUB_ORGANIZATIONS": {
       "required": false,
-      "description": "(optional) users must be a member of at least one organization in list, ex. hello,myteam,mycompany"
+      "description": "(optional) users must be a member of at least one organization in list, ex. my-team,my-other-team"
     },
     "COOKIE_SECRET": {
       "required": true,

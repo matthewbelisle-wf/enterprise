@@ -18,11 +18,11 @@ Below is a list of configuration varibles which can be modified to customerize y
 ```sh
 # Setup
 # ---------------------------------
-ENTERPRISE_COMPANY  # (required) provided by Codecov staff
 ENTERPRISE_LICENSE  # (required) provided by Codecov staff
 GUEST_ACCESS        # allow non-logged in users to view public repos
 LOGLVL: WARNING     # info, debug or warning
 COOKIE_SECRET       # (required) string used to encrypt secure cookies
+DELAY_POLICY        # change the default behavior of the delayed notification queue
 MEDIA_URL           # (default) static files are served from Codecov's Amazon S3
                     # (localhost) set value to 'localhost' to serve js/css/images locally
                     # (advanced) set value to url to privatly hosting static files for advanced usage
