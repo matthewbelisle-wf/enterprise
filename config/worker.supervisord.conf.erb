@@ -1,0 +1,15 @@
+[unix_http_server]
+file=/tmp/supervisor.sock
+
+[supervisord]
+pidfile=/tmp/supervisord.pid
+nodaemon=true
+
+[program:celery]
+command=celery worker -c 4 --broker=<%= ENV['RABBITMQ_URL'] || ENV['REDIS_URL'] || ENV['REDISCLOUD_URL'] %>
+process_name=%(program_name)s
+redirect_stderr=true
+stdout_logfile=logs/access.log
+stderr_logfile=logs/error.log
+autorestart=true
+priority=1

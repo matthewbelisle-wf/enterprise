@@ -1,5 +1,5 @@
 daemon off;
-worker_processes <%= ENV['NGINX_WORKERS'] || 1 %>;
+worker_processes 1;
 
 events {
     use epoll;
@@ -13,10 +13,9 @@ http {
     gzip_min_length 512;
 
     upstream frontends{
-        # Load Balancing: https://www.nginx.com/resources/admin-guide/load-balancer/#method
-        <% for x in 0..((ENV['WEB_PROCESSES'] || 2).to_i - 1) %>
-            server localhost:888<%= x %>;
-        <% end %>
+        server localhost:8880;
+        server localhost:8881;
+        server localhost:8882;
     }
 
     server_tokens off;
@@ -34,7 +33,10 @@ http {
     # to all frontends)
     proxy_next_upstream error http_502;
 
-    # Heroku is 30
+    proxy_read_timeout 200;
+    tcp_nopush on;
+    tcp_nodelay on;
+
     client_body_timeout 12;
     client_header_timeout 12;
 
