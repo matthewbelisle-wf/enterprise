@@ -8,7 +8,6 @@
   - Add configuration for [custom domains](https://github.com/codecov/enterprise/wiki/Configuration#ci-providers)
   - Fallback based on average number of coverage builds.
 - Enhanced Github Status for project coverage
-  - ....
 - New supported language: [Lua](https://github.com/codecov/example-lua)
 
 
