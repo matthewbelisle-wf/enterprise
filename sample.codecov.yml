@@ -3,14 +3,13 @@
 # ========================================================================================
 #                      **IMPORTANT** This is a SAMPLE file only
 #      Call 'codecov config' to generate your codecov.yml found at ~/.codecov/codecov.yml
-#          Learn more at https://github.com/codecov/enterprise/wiki/Setup-codecov.yml
+#          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
 #                            Thank you! <3 the Codecov Team
 
 setup:
-    enterprise_company: null      # (required) provided by Codecov staff
     enterprise_license: null      # (required) provided by Codecov staff
     guest_access: false           # allow non-logged in users to view public repos
-    loglvl: WARNING               # info, debug or warning
+    loglvl: INFO                  # INFO, DEBUG or WARNING
     cookie_secret: null           # (required) string used to encrypt secure cookies
     delay_policy: null            # change the default behavior of the delayed notification queue
     notify_policy: passed         # (passed) Only run notifications if all ci builds pass. Default. Github only.
