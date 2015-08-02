@@ -6,7 +6,7 @@ pidfile=/tmp/supervisord.pid
 nodaemon=true
 
 [program:celery]
-command=celery worker -c 4 --broker=<%= ENV['RABBITMQ_URL'] || ENV['REDIS_URL'] || ENV['REDISCLOUD_URL'] %>
+command=./codecov worker -c 4
 process_name=%(program_name)s
 redirect_stderr=true
 stdout_logfile=logs/access.log
