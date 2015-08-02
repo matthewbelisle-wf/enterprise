@@ -2,15 +2,19 @@
 #                 Codecov Enterprise: Sample codecov.yml config file
 # ========================================================================================
 #                      **IMPORTANT** This is a SAMPLE file only
+<<<<<<< HEAD:sample.codecov.yml
 #      Call `codecov config` to generate your codecov.yml found at ~/.codecov/codecov.yml
 #          Learn more at https://github.com/codecov/enterprise/wiki/Setup-codecov.yml
+=======
+#      Call 'codecov config' to generate your codecov.yml found at ~/.codecov/codecov.yml
+#          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
+>>>>>>> prerelease:sample.codecov.yml
 #                            Thank you! <3 the Codecov Team
 
 setup:
-    enterprise_company: null      # (required) provided by Codecov staff
     enterprise_license: null      # (required) provided by Codecov staff
     guest_access: false           # allow non-logged in users to view public repos
-    loglvl: WARNING               # info, debug or warning
+    loglvl: INFO                  # INFO, DEBUG or WARNING
     cookie_secret: null           # (required) string used to encrypt secure cookies
     delay_policy: null            # change the default behavior of the delayed notification queue
     notify_policy: passed         # (passed) Only run notifications if all ci builds pass. Default. Github only.
@@ -26,7 +30,11 @@ services:
     logentries_token: null        # logging product interactions: https://logentries.com
     mailgun_endpoint: null        # Mailgun url to send system emails from
     google_analytics_key: null    # front-end tracking
+<<<<<<< HEAD:sample.codecov.yml
     ci: null                      # list of ci domains to monitor builds
+=======
+    ci_providers: null            # list of ci domains to check Github Status target urls against, ex: "jenkins.my-company.com"
+>>>>>>> prerelease:sample.codecov.yml
     aws:
         access_key_id: null       #
         secret_access_key: null   #
@@ -78,3 +86,4 @@ gitlab_enterprise:
     client_secret: null          #
     access_token: null           # used to post comments, statuses, etc.
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
+
