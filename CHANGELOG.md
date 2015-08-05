@@ -1,3 +1,8 @@
+### `v2.0.3`
+- Fixed notifications refernece point for previous commit comparrison
+- Fixed removing pull requests from active branches
+- Fixed merging of Cobertura reports and added new method for conditions
+
 ### `v2.0.2`
 - Fixed navigating to pull requests in the UI
 - Added Organization Bot which, when set, will post all the features for Codecov
