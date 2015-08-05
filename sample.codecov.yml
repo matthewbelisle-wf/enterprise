@@ -2,13 +2,8 @@
 #                 Codecov Enterprise: Sample codecov.yml config file
 # ========================================================================================
 #                      **IMPORTANT** This is a SAMPLE file only
-<<<<<<< HEAD:sample.codecov.yml
-#      Call `codecov config` to generate your codecov.yml found at ~/.codecov/codecov.yml
-#          Learn more at https://github.com/codecov/enterprise/wiki/Setup-codecov.yml
-=======
 #      Call 'codecov config' to generate your codecov.yml found at ~/.codecov/codecov.yml
 #          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
->>>>>>> prerelease:sample.codecov.yml
 #                            Thank you! <3 the Codecov Team
 
 setup:
@@ -30,11 +25,7 @@ services:
     logentries_token: null        # logging product interactions: https://logentries.com
     mailgun_endpoint: null        # Mailgun url to send system emails from
     google_analytics_key: null    # front-end tracking
-<<<<<<< HEAD:sample.codecov.yml
-    ci: null                      # list of ci domains to monitor builds
-=======
     ci_providers: null            # list of ci domains to check Github Status target urls against, ex: "jenkins.my-company.com"
->>>>>>> prerelease:sample.codecov.yml
     aws:
         access_key_id: null       #
         secret_access_key: null   #
