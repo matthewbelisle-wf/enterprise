@@ -6,10 +6,11 @@ pidfile=/tmp/supervisord.pid
 nodaemon=true
 
 [program:celery]
-command=./codecov worker -c 4
-process_name=%(program_name)s
+command=./codecov worker --concurrency <%= ENV['WORKER_CONCURRENCY'] || 2 %>
+process_name=%(program_name)s_%(process_num)d
 redirect_stderr=true
 stdout_logfile=logs/access.log
 stderr_logfile=logs/error.log
 autorestart=true
+numprocs=<%= ENV['WORKER_PROCESSES'] || 1 %>
 priority=1

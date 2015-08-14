@@ -1,5 +1,5 @@
 daemon off;
-worker_processes 1;
+worker_processes <%= ENV['NGINX_WORKERS'] || 1 %>;
 
 events {
     use epoll;
@@ -13,9 +13,9 @@ http {
     gzip_min_length 512;
 
     upstream frontends{
-        server localhost:8880;
-        server localhost:8881;
-        server localhost:8882;
+        <% for x in 0..((ENV['WEB_PROCESSES'] || 3).to_i - 1) %>
+            server localhost:888<%= x %>;
+        <% end %>
     }
 
     server_tokens off;

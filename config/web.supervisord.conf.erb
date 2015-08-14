@@ -12,14 +12,15 @@ redirect_stderr=true
 autorestart=true
 stdout_logfile=logs/access.log
 stderr_logfile=logs/error.log
-numprocs=3
+numprocs=<%= ENV['WEB_PROCESSES'] || 3 %>
 priority=1
 
 [program:nginx]
 command=bash -c "sleep 4 && exec bin/nginx -p . -c config/nginx.conf"
-process_name=nginx
+process_name=%(program_name)s_%(process_num)d
 redirect_stderr=true
 autorestart=true
 stdout_logfile=logs/access.log
 stderr_logfile=logs/error.log
+numprocs=<%= ENV['NGINX_PROCESSES'] || 1 %>
 priority=2
