@@ -1,5 +1,26 @@
+### `v2.0.4`
+- Fixed login when in Guest Mode
+- Ignoring old uploaded reports based on provided timestamps
+- Fixed Node ES6 lcov/json reports
+- Better targeting for comparisson commits when checking if coverage increased or decreases
+- Now setting pending status for Github Commit Statuses
+- Added Gitter notification support
+- Improved Github Statuses
+    - Added new Smart mode to compare against head of PR base or previous successful build on same branch else master
+    - Removed "commit" status because Patch status was much more reliable
+- Added CI status to UI (Github only)
+- Added build queue to UI
+- Improved concurrecny of build queue by processing only report report per commit at a time
+- Added thresholds to notifications
+- Badges have precision arguments. See https://github.com/codecov/support/issues/77
+- Moved API endpoint to `/api/` for simplicity
+  - No longer requires `Accept` argument
+- Impoved uploaders to respect git/hg listed files
+- Added more information to Slack/Hipchat notifications
+
+
 ### `v2.0.3`
-- Fixed notifications refernece point for previous commit comparrison
+- Fixed notifications reference point for previous commit comparrison
 - Fixed removing pull requests from active branches
 - Fixed merging of Cobertura reports and added new method for conditions
 
