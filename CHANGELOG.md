@@ -1,4 +1,4 @@
-### `v2.0.4`
+### `v2.1.0`
 - Fixed login when in Guest Mode
 - Ignoring old uploaded reports based on provided timestamps
 - Fixed Node ES6 lcov/json reports
@@ -17,7 +17,7 @@
   - No longer requires `Accept` argument
 - Impoved uploaders to respect git/hg listed files
 - Added more information to Slack/Hipchat notifications
-
+- Show author and CI status in commits page
 
 ### `v2.0.3`
 - Fixed notifications reference point for previous commit comparrison
