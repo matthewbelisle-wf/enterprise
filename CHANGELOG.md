@@ -1,3 +1,9 @@
+### `v2.1.1`
+- Added Github Hooks to assist with data accuracy
+- xcode-7 and Swift are now supported.
+  - Please update your Bash uploader https://github.com/codecov/codecov-bash
+- Issues with Guest Mode fixed
+
 ### `v2.1.0`
 - Fixed login when in Guest Mode
 - Ignoring old uploaded reports based on provided timestamps
