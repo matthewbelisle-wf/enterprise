@@ -1,3 +1,13 @@
+### `v2.1.3`
+- Add option to specify custom url's for Hipchat integration
+- Fix viewing badges/graphs when `guest_mode=off`
+- Bitbucket changed the pull-request endpoint from "pull-request" to "pull-requests"
+- Fixed Go reports when extra newlines presented
+- Fixed issue with SIGTERM due to package name `enterprise`. Now `codecov`.
+
+### `v2.1.3`
+- Fix login issue
+
 ### `v2.1.1`
 - Added Github Hooks to assist with data accuracy
 - xcode-7 and Swift are now supported.
