@@ -7,6 +7,7 @@
 #                            Thank you! <3 the Codecov Team
 
 setup:
+    codecov_url: null             # (required) the url endpoint for your Codecov instance
     enterprise_license: null      # (required) provided by Codecov staff
     guest_access: false           # allow non-logged in users to view public repos
     loglvl: INFO                  # INFO, DEBUG or WARNING
