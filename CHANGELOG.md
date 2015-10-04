@@ -1,3 +1,8 @@
+### `v2.1.4`
+- Fix targeting Codecov Bash uploader, locally
+- New v3 uploading endpoint. Direct to s3 to help improve product performance.
+- Post codecov/patch status from webhooks
+
 ### `v2.1.3`
 - Add option to specify custom url's for Hipchat integration
 - Fix viewing badges/graphs when `guest_mode=off`
