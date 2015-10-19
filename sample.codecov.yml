@@ -61,6 +61,14 @@ bitbucket:
     organizations: null           # List of teams. Users must be a member of at least one. (optional) (default all)
     global_upload_token: null     # a secret string that is used as a global token for uploading reports
 
+# Bitbucket Server
+# ---------------------------------
+bitbucket_server:
+    url: null                     # (required) the base url for your Bitbucket Server
+    client_id: null               # (required) application client_id
+    organizations: null           # List of teams. Users must be a member of at least one. (optional) (default all)
+    global_upload_token: null     # a secret string that is used as a global token for uploading reports
+
 # Gitlab
 # ---------------------------------
 gitlab:
