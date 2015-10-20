@@ -72,8 +72,8 @@ bitbucket_server:
 # Gitlab
 # ---------------------------------
 gitlab:
-    client_id: null              #
-    client_secret: null          #
+    client_id: null              # Application Id from https://gitlab.com/profile/applications/new
+    client_secret: null          # Secret from https://gitlab.com/profile/applications/new
     access_token: null           # used to post comments, statuses, etc.
     organizations: null          # List of teams. Users must be a member of at least one. (optional) (default all)
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
@@ -81,9 +81,9 @@ gitlab:
 # Gitlab Enterprise
 # ---------------------------------
 gitlab_enterprise:
-    url: null                    #
-    client_id: null              #
-    client_secret: null          #
+    url: null                    # Your instance of Gitlab (ex. https://gitlab.mycompany.com)
+    client_id: null              # Application Id from https://gitlab.mycompany.com/profile/applications/new
+    client_secret: null          # Secret from https://gitlab.mycompany.com/profile/applications/new
     access_token: null           # used to post comments, statuses, etc.
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
 
