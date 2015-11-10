@@ -1,4 +1,7 @@
 ### `v3.0.0`
+- increase processing speed of diffs
+- various report fixes
+- improved system speed and logging backend operations
 
 ### `v2.1.4`
 - Fix targeting Codecov Bash uploader, locally
