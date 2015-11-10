@@ -1,3 +1,5 @@
+### `v3.0.0`
+
 ### `v2.1.4`
 - Fix targeting Codecov Bash uploader, locally
 - New v3 uploading endpoint. Direct to s3 to help improve product performance.

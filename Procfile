@@ -1,2 +1,2 @@
 web: bin/run web
-worker: bin/run worker
+worker: codecov worker -c 2
