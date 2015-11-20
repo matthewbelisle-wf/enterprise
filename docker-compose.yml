@@ -10,10 +10,10 @@ nginx:
 
 web:
   build: .
-  command: /opt/codecov/codecov web --port 5000
+  command: codecov web --port 5000
   volumes:
-    - ./codecov.yml:/opt/codecov/codecov.yml
-    - ./codecov:/opt/codecov/codecov
+    - ./codecov.yml
+    - ./codecov
   links:
     - ccdatabase
     - ccredis
@@ -25,10 +25,10 @@ web:
 
 worker:
   build: .
-  command: /opt/codecov/codecov worker
+  command: codecov worker
   volumes:
-    - ./codecov.yml:/opt/codecov/codecov.yml
-    - ./codecov:/opt/codecov/codecov
+    - ./codecov.yml
+    - ./codecov
   links:
     - ccdatabase
     - ccredis
