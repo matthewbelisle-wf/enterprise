@@ -1,3 +1,6 @@
+### `v3.0.1`
+- fix gitlab posting multiple comments
+
 ### `v3.0.0`
 - increase processing speed of diffs
 - various report fixes
