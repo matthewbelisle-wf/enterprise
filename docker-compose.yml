@@ -13,7 +13,7 @@ web:
   command: /opt/codecov/codecov web
   volumes:
     - ./codecov.yml:/opt/codecov/codecov.yml
-    - ./codecov:/opt/codecov/codecov
+    - ./codecov:/opt/codecov/codecov web --port 5000
   links:
     - ccdatabase
     - ccredis
