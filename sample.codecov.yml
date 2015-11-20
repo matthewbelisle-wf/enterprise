@@ -4,11 +4,7 @@
 #                      **IMPORTANT** This is a SAMPLE file only
 #      Call 'codecov config' to generate your codecov.yml found at ~/.codecov/codecov.yml
 #          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
-<<<<<<< HEAD
-#                            Thank you! <3 the Codecov Team
-=======
 #             Support in IRC #codecov or https://gitter.im/codecov/support
->>>>>>> prerelease
 
 setup:
     codecov_url: null             # (required) the url endpoint for your Codecov instance
@@ -17,11 +13,7 @@ setup:
     loglvl: INFO                  # INFO, DEBUG or WARNING
     cookie_secret: null           # (required) string used to encrypt secure cookies
     delay_policy: null            # change the default behavior of the delayed notification queue
-<<<<<<< HEAD
-    notify_policy: passed         # (passed) Only run notifications if all ci builds pass. Default. Github only.
-=======
     notify_policy: passed         # (passed) Only run notifications if all ci builds pass. Default.
->>>>>>> prerelease
                                   # (first) only run notifications on first build received per commit
     media_url: null               # (default) static files are served from Codecov's Amazon S3
                                   # (localhost) set value to 'localhost' to serve js/css/images locally
@@ -34,11 +26,7 @@ services:
     logentries_token: null        # logging product interactions: https://logentries.com
     mailgun_endpoint: null        # Mailgun url to send system emails from
     google_analytics_key: null    # front-end tracking
-<<<<<<< HEAD
-    ci_providers: null            # list of ci domains to check Github Status target urls against, ex: "jenkins.my-company.com"
-=======
     ci_providers: null            # list of ci domains to check GitHub Status target urls against, ex: "jenkins.my-company.com"
->>>>>>> prerelease
     aws:
         access_key_id: null       #
         secret_access_key: null   #
@@ -57,22 +45,14 @@ github:
 # Github Enterprise
 # ---------------------------------
 github_enterprise:
-<<<<<<< HEAD
-    url: null                     # (required) the base url of your Github Enterprise ex. https://enterprise-hostname.com
-=======
     url: null                     # (required) the base url of your GitHub Enterprise ex. https://enterprise-hostname.com
->>>>>>> prerelease
     client_id: null               # (required) from https://github.com/settings/applications/new
     client_secret: null           # (required) from https://github.com/settings/applications/new
     access_token: null            # used to post comments, statuses, etc.
     global_upload_token: null     # a secret string that is used as a global token for uploading reports
-<<<<<<< HEAD
-    api_url: null                 # (optional) the base url of your Github Enterprise API defaults to `url + "/api/v3"`
-=======
     api_url: null                 # (optional) the base url of your GitHub Enterprise API defaults to `url + "/api/v3"`
     verify_ssl: null              # (optiona) if false: will not verify server ssl certificate
     ssl_pem: null                 # (optiona) SSL CA cacert.pem used when making http requests with GitHub
->>>>>>> prerelease
 
 # Bitbucket
 # ---------------------------------
@@ -83,13 +63,6 @@ bitbucket:
     organizations: null           # List of teams. Users must be a member of at least one. (optional) (default all)
     global_upload_token: null     # a secret string that is used as a global token for uploading reports
 
-<<<<<<< HEAD
-# Gitlab
-# ---------------------------------
-gitlab:
-    client_id: null              #
-    client_secret: null          #
-=======
 # Bitbucket Server
 # ---------------------------------
 bitbucket_server:
@@ -105,7 +78,6 @@ bitbucket_server:
 gitlab:
     client_id: null              # Application Id from https://gitlab.com/profile/applications/new
     client_secret: null          # Secret from https://gitlab.com/profile/applications/new
->>>>>>> prerelease
     access_token: null           # used to post comments, statuses, etc.
     organizations: null          # List of teams. Users must be a member of at least one. (optional) (default all)
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
@@ -113,13 +85,6 @@ gitlab:
 # Gitlab Enterprise
 # ---------------------------------
 gitlab_enterprise:
-<<<<<<< HEAD
-    url: null                    #
-    client_id: null              #
-    client_secret: null          #
-    access_token: null           # used to post comments, statuses, etc.
-    global_upload_token: null    # a secret string that is used as a global token for uploading reports
-=======
     url: null                    # Your instance of Gitlab (ex. https://gitlab.mycompany.com)
     client_id: null              # Application Id from https://gitlab.mycompany.com/profile/applications/new
     client_secret: null          # Secret from https://gitlab.mycompany.com/profile/applications/new
@@ -127,5 +92,4 @@ gitlab_enterprise:
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
     verify_ssl: null             # (optiona) if false: will not verify server ssl certificate
     ssl_pem: null                # (optiona) SSL CA cacert.pem used when making http requests with Gitlab
->>>>>>> prerelease
 
