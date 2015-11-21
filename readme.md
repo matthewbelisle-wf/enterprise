@@ -1,7 +1,17 @@
 # Codecov Enterprise
+> Code coverage done right. **Secure**, behind your firewall. Self-hosted edition.
 
-Codecov Enterprise is for customers whom wish to utilize Codecov in a **private environment** which may be hosted on the cloud or on an internal networked computer.
+[![video][0]][1]
 
-> We look forward to working with your team!
+# [Inquire today][2] or [Learn more now][3]
 
-### Get setup in minutes. [Start here](https://github.com/codecov/enterprise/wiki)
+## Demo 30 seconds
+
+```bash
+curl -sSL https:// | sh
+```
+
+[0]: 
+[1]: 
+[2]: mailto:enterprise@codecov.io
+[2]: https://github.com/codecov/enterprise/wiki
