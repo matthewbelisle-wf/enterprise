@@ -1,21 +1,32 @@
-# install docker
+#!/bin/bash
+
+echo "Install Docker"
 curl -sSL https://get.docker.com/ | sh
 
-# start docker
+echo "Starting Docker"
 sudo service docker start
 
-# pull Codecov Enterprise
-docker pull codecov/enterprise
+echo "Retrieving droplet: Redis"
+docker run --name codecov-redis -d redis
+
+echo "Retrieving Dockedroplet: Postgdropletes"
+docker run --name codecov-postgres -d postgres
 
 # create config file
-curl http://git.io/v4Aco > codecov.yml
+echo "Creating config file for Codecov: codecov.yml"
+curl https://git.io/v4Aco > codecov.yml
 
-# Start Codecov
-docker run -d -p 80:80 -v codecov.yml:/codecov.yml codecov/enterprise
+echo "Retrieving droplet: Codecov Enterprise"
+docker run -d -p 80:80 \
+           --link codecov-redis:redis \
+           --link codecov-postgres:postgres \
+           -v codecov.yml:/codecov.yml \
+           codecov/enterprise
 
 ip=ifconfig | grep 'eth0:' -n1 | tail -1 | rev | cut -d' ' -f1 | rev
 
 echo "
+
   _____          _
  / ____|        | |
 | |     ___   __| | ___  ___ _____   __

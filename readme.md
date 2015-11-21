@@ -8,10 +8,12 @@
 ## Demo 30 seconds
 
 ```bash
-curl -sSL https:// | sh
+curl -sSL https://git.io/v4jXc | sh
 ```
+> ... or view the [script here][4]
 
 [0]: 
 [1]: 
 [2]: mailto:enterprise@codecov.io
-[2]: https://github.com/codecov/enterprise/wiki
+[3]: https://github.com/codecov/enterprise/wiki
+[4]: https://github.com/codecov/enterprise/blob/prerelease/demo.sh
