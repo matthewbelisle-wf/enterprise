@@ -1,13 +1,14 @@
-FROM python:2.7.10
-
+FROM ubuntu:13.04
 MAINTAINER Steve Peak <steve@codecov.io>
 
-RUN useradd --create-home --shell /bin/bash --system codecov
+RUN apt-get update && apt-get install -y python-psycopg2
 
-USER codecov
+RUN apt-get install -y supervisor
+RUN mkdir /var/log/supervisor
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-WORKDIR /opt/codecov
+RUN apt-get install -y nginx
+COPY docker/nginx.conf /nginx.conf
 
-ADD . /opt/codecov
-
-CMD [ "/opt/codecov/codecov" ]
+EXPOSE 22 80
+CMD ["/usr/bin/supervisord"]
