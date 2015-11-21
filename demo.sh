@@ -1,29 +1,35 @@
 #!/bin/bash
 
-echo "Install Docker"
+# Install Docker
 curl -sSL https://get.docker.com/ | sh
 
-echo "Starting Docker"
+# Starting Docker
 sudo service docker start
 
-echo "Retrieving droplet: Redis"
+# Retrieving droplet: Redis
 docker run --name codecov-redis -d redis
 
-echo "Retrieving Dockedroplet: Postgdropletes"
+# Retrieving Dockedroplet: Postgdropletes
 docker run --name codecov-postgres -d postgres
 
 # create config file
-echo "Creating config file for Codecov: codecov.yml"
-curl https://git.io/v4Aco > codecov.yml
+# Creating config file for Codecov: codecov.yml
+ip=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}' | tail -1)
+random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)
 
-echo "Retrieving droplet: Codecov Enterprise"
+echo "# Read more at https://github.com/codecov/enterprise/wiki/Configuration
+setup:
+  codecov_url: http://$ip
+  enterprise_license: 'enter your license key here'
+  cookie_secret: $random
+" > codecov.yml
+
+# Retrieving droplet: Codecov Enterprise
 docker run -d -p 80:80 \
            --link codecov-redis:redis \
            --link codecov-postgres:postgres \
            -v codecov.yml:/codecov.yml \
            codecov/enterprise
-
-ip=ifconfig | grep 'eth0:' -n1 | tail -1 | rev | cut -d' ' -f1 | rev
 
 echo "
 
@@ -34,16 +40,14 @@ echo "
 | |___| (_) | (_| |  __/ (_| (_) \\ V /
  \\_____\\___/ \\__,_|\\___|\\___\\___/ \\_/
 
-    Thank you for choosing Codecov!
 
-     Please navigate to http://$ip
+Thank you for choosing Codecov!
 
-PS: In demo mode reports will be deleted after 48 hours
-    You can request a 45 day license key to have no restrictions.
-    Inquire at enterprise@codecov.io
-
-Support: https://github.com/codecov/support
+Please navigate to http://$ip in your browser.
 
 Cheers!
 The Codecov Family
+
+https://github.com/codecov/support
+enterprise@codecov.io
 "
