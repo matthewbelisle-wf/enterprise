@@ -20,7 +20,7 @@ random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)
 echo "# Read more at https://github.com/codecov/enterprise/wiki/Configuration
 setup:
   codecov_url: http://$ip
-  enterprise_license: 'enter your license key here'
+  enterprise_license: demo
   cookie_secret: $random
 " > codecov.yml
 
@@ -47,10 +47,15 @@ Please navigate to http://$ip in your browser.
 
 Your codecov.yml configuration file is located here
     $PWD/codecov.yml
+  
+Request a trial license to have full system access.
+While in demo mode: you may only login with one user.
+  and reports are deleted after 48 hours.
 
-Cheers!
+Thank you!
 The Codecov Family
 
+IRC #codecov
 https://github.com/codecov/support
 enterprise@codecov.io
 "
