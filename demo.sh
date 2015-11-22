@@ -28,7 +28,7 @@ setup:
 docker run -d -p 80:80 \
            --link codecov-redis:redis \
            --link codecov-postgres:postgres \
-           -v codecov.yml:/codecov.yml \
+           -v "$PWD/codecov.yml:/codecov.yml" \
            codecov/enterprise
 
 echo "
@@ -44,6 +44,9 @@ echo "
 Thank you for choosing Codecov!
 
 Please navigate to http://$ip in your browser.
+
+Your codecov.yml configuration file is located here
+    $PWD/codecov.yml
 
 Cheers!
 The Codecov Family
