@@ -5,12 +5,6 @@
 #          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
 #             Support in IRC #codecov or https://gitter.im/codecov/support
 
-# ============================================================================
-#                 Codecov Enterprise: Configuration File
-# ============================================================================
-#    Learn more at https://github.com/codecov/enterprise/wiki/Configuration
-#         Support in IRC #codecov or https://gitter.im/codecov/support
-
 setup:
     codecov_url: null             # (required) the url endpoint for your Codecov instance
     enterprise_license: null      # (required) provided by Codecov staff
