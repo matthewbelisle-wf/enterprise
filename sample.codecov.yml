@@ -91,3 +91,4 @@ gitlab_enterprise:
     global_upload_token: null    # a secret string that is used as a global token for uploading reports
     verify_ssl: null             # (optiona) if false: will not verify server ssl certificate
     ssl_pem: null                # (optiona) SSL CA cacert.pem used when making http requests with Gitlab
+
