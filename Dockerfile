@@ -1,4 +1,4 @@
-FROM        ubuntu:14.04
+FROM        alpine:3.1
 MAINTAINER  Steve Peak <steve@codecov.io>
 
 RUN         apt-get update
