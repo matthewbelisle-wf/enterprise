@@ -26,7 +26,7 @@ setup:
 
 # Retrieving droplet: Codecov Enterprise
 docker run -d -p 80:80 \
-           --name codecov
+           --name codecov \
            --link codecov-redis:redis \
            --link codecov-postgres:postgres \
            -v "$PWD/codecov.yml:/codecov.yml" \

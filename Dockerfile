@@ -2,7 +2,7 @@ FROM        alpine:3.3
 MAINTAINER  Steve Peak <steve@codecov.io>
 
 RUN         apk update
-RUN         apk add --upgrade python-dev supervisor nginx
+RUN         apk add --upgrade python-dev postgresql-dev supervisor nginx
 COPY        supervisord.conf /supervisord.conf
 COPY        nginx.conf /nginx.conf
 COPY        codecov /codecov
