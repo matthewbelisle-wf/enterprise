@@ -1,11 +1,11 @@
 FROM        alpine:3.3
 MAINTAINER  Steve Peak <steve@codecov.io>
 
-RUN         apt-get update
-RUN         apt-get install -y python-dev supervisor nginx
-COPY        supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY        nginx.conf /etc/nginx/nginx.conf
-COPY        codecov /home/codecov
+RUN         apk update
+RUN         apk add --upgrade python-dev supervisor nginx
+COPY        supervisord.conf /supervisord.conf
+COPY        nginx.conf /nginx.conf
+COPY        codecov /codecov
 
 EXPOSE      80
-CMD         ["/usr/bin/supervisord"]
+CMD         ["/usr/bin/supervisord -C /supervisord.conf"]
