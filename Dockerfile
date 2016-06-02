@@ -1,8 +1,8 @@
-FROM        alpine:3.1
+FROM        alpine:3.3
 MAINTAINER  Steve Peak <steve@codecov.io>
 
 RUN         apt-get update
-RUN         apt-get install -y supervisor nginx python-psycopg2 ca-certificates
+RUN         apt-get install -y python-dev supervisor nginx
 COPY        supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY        nginx.conf /etc/nginx/nginx.conf
 COPY        codecov /home/codecov
