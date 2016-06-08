@@ -10,4 +10,4 @@ COPY        nginx.conf /nginx.conf
 COPY        codecov /codecov
 
 EXPOSE      22 80
-CMD         ["./web+worker -n"]
+CMD         ["/web+worker -n"]

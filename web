@@ -57,7 +57,7 @@ if [ $use_nginx = 1 ];
 then
   echo "
 [program:nginx]
-command=bash -c 'sleep 10 && exec nginx -p . -c /.nginx.conf'
+command=sh -c 'sleep 10 && exec nginx -p . -c /nginx.conf'
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 stdout_logfile=/dev/stdout
