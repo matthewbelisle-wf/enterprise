@@ -7,7 +7,8 @@ COPY        web+worker /bin/web+worker
 COPY        web /bin/web
 COPY        worker /bin/worker
 COPY        nginx.conf /nginx.conf
+COPY        mime.types /mime.types
 COPY        codecov /codecov
 
 EXPOSE      22 80
-CMD         ["web+worker -n"]
+CMD         ["/bin/web+worker -n"]

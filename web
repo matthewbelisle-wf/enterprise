@@ -28,8 +28,6 @@ server localhost:888$i;"
   done
 fi
 
-echo "$frontends"
-
 echo "
 [unix_http_server]
 file=/tmp/supervisor.sock
@@ -70,6 +68,6 @@ stopwaitsecs=600
 " >> /supervisord.conf
 fi
 
-sed -e "s/__FRONTENDS__/$frontends/" nginx.conf > /.nginx.conf
+sed -i.bak -e "s/__FRONTENDS__/$frontends/" nginx.conf
 
 /usr/bin/supervisord -c /supervisord.conf
