@@ -11,4 +11,4 @@ COPY        mime.types /mime.types
 COPY        codecov /codecov
 
 EXPOSE      22 80
-CMD         ["/bin/web+worker -n"]
+CMD         ["sh /bin/web+worker -n"]
