@@ -60,7 +60,7 @@ priority=1
 environment=DOCKER='true'
 
 [program:worker]
-command=/codecov worker $concurrency $queue
+command=/codecov worker -n %(process_num)d $concurrency $queue
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 startsecs=10
@@ -89,6 +89,8 @@ priority=3
 " >> /supervisord.conf
 fi
 
-sed -e "s/__FRONTENDS__/$frontends/" nginx.conf > /.nginx.conf
+# add frontends
+sed -i.bak -e "s/__FRONTENDS__/$frontends/" /nginx.conf
 
+# run supervisor
 /usr/bin/supervisord -c /supervisord.conf

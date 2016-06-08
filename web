@@ -2,8 +2,6 @@
 
 set -e +o pipefail
 
-trap "kill -- -$$" EXIT
-
 use_nginx=0
 numprocs=$(grep -c ^processor /proc/cpuinfo 2> /dev/null || echo '1')
 frontends='server localhost:8880;'
