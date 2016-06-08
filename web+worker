@@ -1,0 +1,91 @@
+#!/bin/bash
+
+set -e +o pipefail
+
+use_nginx=0
+concurrency='-c 1'
+numprocs='1'
+queue=''
+frontends='server localhost:8880;'
+
+if [ $# != 0 ];
+then
+  while getopts "np:c:q:" o
+  do
+    case "$o" in
+      "n")
+        use_nginx=1
+        ;;
+      "p")
+        numprocs="$OPTARG"
+        i="0"
+        while [ $i -lt $(expr $numprocs - 1) ]
+        do
+          i=$[$i+1]
+          frontends="$frontends
+server localhost:888$i;"
+        done
+        ;;
+      "c")
+         concurrency="-c $OPTARG"
+         ;;
+      "q")
+         queue="--queue $OPTARG"
+         ;;
+    esac
+  done
+fi
+
+
+echo "
+[supervisord]
+pidfile=/tmp/supervisord.pid
+nodaemon=true
+logfile=/dev/stdout
+logfile_maxbytes=0
+
+[program:web]
+command=/codecov web --port 888%(process_num)d --config /codecov.yml
+process_name=%(program_name)s_%(process_num)d
+autorestart=true
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+numprocs=$numprocs
+priority=1
+environment=DOCKER='true'
+
+[program:worker]
+command=/codecov worker --config /codecov.yml $concurrency $queue
+process_name=%(program_name)s_%(process_num)d
+autorestart=true
+startsecs=10
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+numprocs=1
+priority=2
+environment=DOCKER='true'
+" > /supervisord.conf
+
+if [ $use_nginx = 1 ];
+then
+  echo "
+[program:nginx]
+command=bash -c 'sleep 10 && exec nginx -p . -c /nginx.conf'
+process_name=%(program_name)s_%(process_num)d
+autorestart=true
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+numprocs=1
+priority=3
+" >> /supervisord.conf
+fi
+
+sed -e "s/__FRONTENDS__/$frontends/" nginx.conf > /.nginx.conf
+
+/usr/bin/supervisord -c /supervisord.conf
