@@ -2,6 +2,8 @@
 
 set -e +o pipefail
 
+trap "kill -- -$$" EXIT
+
 use_nginx=0
 numprocs=$(grep -c ^processor /proc/cpuinfo 2> /dev/null || echo '1')
 frontends='server localhost:8880;'
@@ -31,6 +33,9 @@ fi
 echo "$frontends"
 
 echo "
+[unix_http_server]
+file=/tmp/supervisor.sock
+
 [supervisord]
 pidfile=/tmp/supervisord.pid
 nodaemon=true
@@ -38,7 +43,7 @@ logfile=/dev/stdout
 logfile_maxbytes=0
 
 [program:web]
-command=/codecov web --port 888%(process_num)d --config /codecov.yml
+command=/codecov web --port 888%(process_num)d
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 stdout_logfile=/dev/stdout
@@ -63,6 +68,7 @@ stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 numprocs=1
 priority=3
+stopwaitsecs=600
 " >> /supervisord.conf
 fi
 

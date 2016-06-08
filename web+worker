@@ -38,6 +38,9 @@ fi
 
 
 echo "
+[unix_http_server]
+file=/tmp/supervisor.sock
+
 [supervisord]
 pidfile=/tmp/supervisord.pid
 nodaemon=true
@@ -45,7 +48,7 @@ logfile=/dev/stdout
 logfile_maxbytes=0
 
 [program:web]
-command=/codecov web --port 888%(process_num)d --config /codecov.yml
+command=/codecov web -p 888%(process_num)d
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 stdout_logfile=/dev/stdout
@@ -57,7 +60,7 @@ priority=1
 environment=DOCKER='true'
 
 [program:worker]
-command=/codecov worker --config /codecov.yml $concurrency $queue
+command=/codecov worker $concurrency $queue
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 startsecs=10

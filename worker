@@ -18,8 +18,8 @@ then
         numprocs="$OPTARG"
         ;;
       "q")
-         queue="--queue $OPTARG"
-         ;;
+        queue="--queue $OPTARG"
+        ;;
     esac
   done
 fi
@@ -32,7 +32,7 @@ logfile=/dev/stdout
 logfile_maxbytes=0
 
 [program:worker]
-command=/codecov worker --config /codecov.yml $concurrency
+command=/codecov worker $concurrency $queue
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 startsecs=10
@@ -43,6 +43,7 @@ stderr_logfile_maxbytes=0
 numprocs=$numprocs
 priority=2
 environment=DOCKER='true'
+stopwaitsecs=600
 " > /supervisord.conf
 
 /usr/bin/supervisord -c /supervisord.conf
