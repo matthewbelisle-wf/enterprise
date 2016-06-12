@@ -33,6 +33,7 @@ echo "
 file=/tmp/supervisor.sock
 
 [supervisord]
+user=root
 pidfile=/tmp/supervisord.pid
 nodaemon=true
 logfile=/dev/stdout

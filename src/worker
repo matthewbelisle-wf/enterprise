@@ -26,6 +26,7 @@ fi
 
 echo "
 [supervisord]
+user=root
 pidfile=/tmp/supervisord.pid
 nodaemon=true
 logfile=/dev/stdout
