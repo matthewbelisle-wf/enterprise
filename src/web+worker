@@ -78,7 +78,7 @@ if [ $use_nginx = 1 ];
 then
   echo "
 [program:nginx]
-command=sh -c 'sleep 10 && exec nginx -p . -c /nginx.conf'
+command=sh -c 'sleep 10 && exec nginx -p . -c /.nginx.conf'
 process_name=%(program_name)s_%(process_num)d
 autorestart=true
 stdout_logfile=/dev/stdout
@@ -88,10 +88,10 @@ stderr_logfile_maxbytes=0
 numprocs=1
 priority=3
 " >> /supervisord.conf
-fi
+  # add frontends
+  sed -e "s/__FRONTENDS__/$frontends/" /nginx.conf > /.nginx.conf
 
-# add frontends
-sed -i.bak -e "s/__FRONTENDS__/$frontends/" /nginx.conf
+fi
 
 # run supervisor
 /usr/bin/supervisord -c /supervisord.conf
