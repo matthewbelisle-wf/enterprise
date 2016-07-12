@@ -8,7 +8,8 @@ COPY        src/web+worker /bin/web+worker
 COPY        src/web /bin/web
 COPY        src/worker /bin/worker
 COPY        src/config /bin/config
-COPY        src/nginx.conf /nginx.conf
+COPY        src/http.nginx.conf /http.nginx.conf
+COPY        src/https.nginx.conf /https.nginx.conf
 COPY        src/mime.types /mime.types
 COPY        src/codecov /codecov
 
