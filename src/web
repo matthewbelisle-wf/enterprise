@@ -28,6 +28,20 @@ server localhost:888$i;"
   done
 fi
 
+if [ -f /nginx.conf ];
+  # custom nginx provided
+  sed -e "s/__FRONTENDS__/$frontends/" /nginx.conf > /.nginx.conf
+else
+  if [ -f /codecov.crt ] && [ -f /codecov.key ];
+  then
+    https=",FORCE_HTTPS='true'"
+    sed -e "s/__FRONTENDS__/$frontends/" /https.nginx.conf > /.nginx.conf
+  else
+    https=""
+    sed -e "s/__FRONTENDS__/$frontends/" /http.nginx.conf > /.nginx.conf
+  fi
+fi
+
 echo "
 [unix_http_server]
 file=/tmp/supervisor.sock
@@ -49,7 +63,7 @@ stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 numprocs=$numprocs
 priority=1
-environment=DOCKER='true'
+environment=DOCKER='true'$https
 " > /supervisord.conf
 
 if [ $use_nginx = 1 ];
@@ -67,8 +81,6 @@ numprocs=1
 priority=3
 stopwaitsecs=600
 " >> /supervisord.conf
-  # add frontends
-  sed -e "s/__FRONTENDS__/$frontends/" /nginx.conf > /.nginx.conf
 fi
 
 /usr/bin/supervisord -c /supervisord.conf
