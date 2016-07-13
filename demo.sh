@@ -17,12 +17,15 @@ docker run --name codecov-postgres -d postgres
 ip=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}' | tail -1)
 random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)
 
-echo "# Read more at https://github.com/codecov/enterprise/wiki/Configuration
+echo "# Documentation at https://github.com/codecov/enterprise/wiki/Configuration
 setup:
   codecov_url: http://$ip
-  enterprise_license: YOUR_LICENSE
+  # enterprise_license: your_license_key_here
   cookie_secret: $random
 " > codecov.yml
+
+# get latest release version number
+tag=$(curl -s https://api.github.com/repos/codecov/enterprise/releases/latest | grep tag_name)
 
 # Retrieving droplet: Codecov Enterprise
 docker run -d -p 80:80 \
@@ -30,7 +33,7 @@ docker run -d -p 80:80 \
            --link codecov-redis:redis \
            --link codecov-postgres:postgres \
            -v "$PWD/codecov.yml:/codecov.yml" \
-           codecov/enterprise
+           codecov/enterprise:${tag:12:6}
 
 echo "
 
