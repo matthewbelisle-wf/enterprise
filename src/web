@@ -29,6 +29,7 @@ server localhost:888$i;"
 fi
 
 if [ -f /nginx.conf ];
+then
   # custom nginx provided
   sed -e "s/__FRONTENDS__/$frontends/" /nginx.conf > /.nginx.conf
 else
