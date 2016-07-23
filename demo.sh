@@ -33,7 +33,7 @@ docker run -d -p 80:80 \
            --link codecov-redis:redis \
            --link codecov-postgres:postgres \
            -v "$PWD/codecov.yml:/codecov.yml" \
-           codecov/enterprise:${tag:12:6}
+           "codecov/enterprise$VERSION"
 
 echo "
 
