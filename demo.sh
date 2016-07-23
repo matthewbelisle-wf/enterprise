@@ -24,8 +24,7 @@ setup:
   cookie_secret: $random
 " > codecov.yml
 
-# get latest release version number
-tag=$(curl -s https://api.github.com/repos/codecov/enterprise/releases/latest | grep tag_name)
+VERSION=":v4.0.6"
 
 # Retrieving droplet: Codecov Enterprise
 docker run -d -p 80:80 \
