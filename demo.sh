@@ -13,18 +13,16 @@ docker run --name codecov-redis -d redis
 docker run --name codecov-postgres -d postgres
 
 # create config file
-# Creating config file for Codecov: codecov.yml
-ip=$(ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}' | tail -1)
-random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)
+random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)]
 
-echo "# Documentation at https://github.com/codecov/enterprise/wiki/Configuration
+echo "# Documentation at http://docs.codecov.io/docs/configuration
 setup:
-  codecov_url: http://$ip
-  # enterprise_license: your_license_key_here
+  codecov_url: http://localhost:80         # This url is used to link all notifications back to Codecov (Comment/Status/etc.)
+  enterprise_license: ___FILL_THIS_IN___   # Provided by Codecov Staff
   cookie_secret: $random
 " > codecov.yml
 
-VERSION=":v4.1.0"
+VERSION=":v4.2.4"
 
 # Retrieving droplet: Codecov Enterprise
 docker run -d -p 80:80 \
@@ -46,17 +44,17 @@ echo "
 
 Thank you for choosing Codecov!
 
-Please navigate to http://$ip in your browser.
+Server:                http://localhost:80
+Configuration File:    $PWD/codecov.yml
 
-Your codecov.yml configuration file is located here
-    $PWD/codecov.yml
+Have a Trial License Key?
+   YES: Please open your configuration and paste it in the file. Restart Codecov via $ docker restart codecov
+    NO: Please contact Codecov Staff to issue a license key. Thank you!
 
-Request a trial license to have full system access.
-While in demo mode: you may only login with one user.
-  and reports are deleted after 48 hours.
+Enjoy and please do not hesistate to ask our team anything!
 
-Thank you!
-The Codecov Family
+<3 The Codecov Family
 
-Email enterprise@codecov.io
+https://codecov.io/support
+enterprise@codecov.io
 "
