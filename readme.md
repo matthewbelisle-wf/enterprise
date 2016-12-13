@@ -37,6 +37,6 @@ Codecov currently requires your team uses one or more of the following: GitHub, 
 
 
 
-[config]: https://github.com/codecov/enterprise/wiki/Configuration
+[config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
 [eula]: https://git.io/voUcJ
