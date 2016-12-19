@@ -2,7 +2,7 @@ FROM        alpine:3.4
 MAINTAINER  Codecov <enterprise@codecov.io>
 
 RUN         apk update
-RUN         apk add --upgrade python-dev postgresql-dev supervisor nginx
+RUN         apk add --no-cache --upgrade python-dev postgresql-dev supervisor nginx
 COPY        docker/cacert.pem /etc/ssl/cert.pem
 COPY        docker/web+worker /bin/web+worker
 COPY        docker/web /bin/web
