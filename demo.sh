@@ -7,10 +7,10 @@ curl -sSL https://get.docker.com/ | sh
 sudo service docker start
 
 # Retrieving droplet: Redis
-docker run --name codecov-redis -d redis
+docker run --name codecov-redis -d redis:3
 
 # Retrieving Dockedroplet: Postgdropletes
-docker run --name codecov-postgres -d postgres
+docker run --name codecov-postgres -d postgres:9.3
 
 # create config file
 random=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1)]
