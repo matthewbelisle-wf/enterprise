@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+
+  nginx:
+    # https://hub.docker.com/r/library/nginx
+    image: nginx
+    volumes:
+      - nginx.config:/etc/nginx/nginx.conf:ro
+    links:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+
+  web:
+    image: store/codecov/enterprise
+    entrypoint: /bin/run web -p 8080
+    ports:
+      - "8080"
+    volumes:
+      - codecov.yml:/config/codecov.yml:ro
+    links:
+      - redis
+      - postgres
+
+  worker:
+    image: store/codecov/enterprise
+    entrypoint: /bin/run worker
+    volumes:
+      - codecov.yml:/config/codecov.yml:ro
+    links:
+      - redis
+      - postgres
+
+  redis:
+    # https://hub.docker.com/r/library/redis
+    image: redis:3.0.7
+
+  postgres:
+    # https://hub.docker.com/r/library/postgres
+    image: postgres:9.3

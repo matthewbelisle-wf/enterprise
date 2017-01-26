@@ -1,0 +1,87 @@
+#!/bin/sh
+
+set -e
+
+show_help() {
+cat << EOF
+
+  web        Start web process
+          -p :int      Port to listen for inbound traffic (Default: 80)
+
+  worker     Start worker process
+          -c :int      Number or celery concurrency (Default: 1) Recommended 1-4
+          -q :str      Name of queue to process tasks (Default: "default")
+
+  config     Validates the codecov.yml structure
+
+  check      Run Docker container health check
+
+EOF
+}
+
+if [ "$#" == "0" ];
+then
+	show_help
+	exit 0
+fi
+
+proc="$1"
+shift
+
+export DOCKER="true"
+
+if [ -f "/codecov.yml" ];
+then
+  # move coddecov to config folder
+  mv /codecov.yml /config/codecov.yml
+fi
+
+if [ ! -f "/config/codecov.yml" ];
+then
+  echo '[docker] No codecov.yml file found.'
+fi
+
+if [ "$proc" = "config" ];
+then
+  codecov config "$@" --config /config/codecov.yml
+
+elif [ "$proc" = "web" ];
+then
+  echo '[docker] Starting web process...'
+  codecov web "$@" --config /config/codecov.yml --port 8080
+  echo '[docker] Web process exited'
+
+elif [ "$proc" = "worker" ];
+then
+  echo '[docker] Starting worker process...'
+  codecov worker "$@" --config /config/codecov.yml
+  echo '[docker] Worker process exited'
+
+elif [ "$proc" = "check" ];
+then
+  echo '[docker] Running container health check...'
+
+  res=$(curl -isX GET http://127.0.0.1:8080 --connect-timeout 3 | head -1)
+
+  if [ "$res" = '' ];
+  then
+    # try worker
+    exit 0;
+
+  else
+    echo '[docker] Web process detected'
+    if [ "$res" =  'HTTP/1.1 200 OK' ];
+    then
+      echo '[docker] Web server running properly'
+    else
+      echo '[docker] Web server not responding'
+      exit 1
+    fi
+  fi
+
+else
+  show_help
+fi
+
+exit 0
+# EOF
