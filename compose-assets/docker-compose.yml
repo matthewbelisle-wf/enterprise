@@ -6,7 +6,7 @@ services:
     # https://hub.docker.com/r/library/nginx
     image: nginx
     volumes:
-      - nginx.config:/etc/nginx/nginx.conf:ro
+      - ./nginx.config:/etc/nginx/nginx.conf:ro
     links:
       - web
     ports:
@@ -14,21 +14,21 @@ services:
       - "443:443"
 
   web:
-    image: store/codecov/enterprise
-    entrypoint: /bin/run web -p 8080
+    image: codecov/enterprise:dockerstore
+    entrypoint: /bin/run web -p 8080 --name web.1
     ports:
       - "8080"
     volumes:
-      - codecov.yml:/config/codecov.yml:ro
+      - ./codecov.yml:/config/codecov.yml:ro
     links:
       - redis
       - postgres
 
   worker:
-    image: store/codecov/enterprise
-    entrypoint: /bin/run worker
+    image: codecov/enterprise:dockerstore
+    entrypoint: /bin/run worker --name worker.1
     volumes:
-      - codecov.yml:/config/codecov.yml:ro
+      - ./codecov.yml:/config/codecov.yml:ro
     links:
       - redis
       - postgres
