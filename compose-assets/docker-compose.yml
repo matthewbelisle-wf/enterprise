@@ -7,6 +7,8 @@ services:
     image: nginx
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
+      # - ./codecov.crt:/etc/nginx/codecov.crt:ro    # Enable SSL: __doc__
+      # - ./codecov.key:/etc/nginx/codecov.key:ro    # [cont] Enable SSL
     links:
       - web
     ports:
