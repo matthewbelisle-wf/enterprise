@@ -16,11 +16,7 @@ Our unique Coverage Diff® will describe the commit in relation to its impact on
 
 Codecov currently requires your team uses one or more of the following: GitHub, GitHub Enterprise, GitLab, Gitlab CE, GitLab Enterprise, Bitbucket and Bitbucket Server (formally Stash).
 
-1. Please read and sign our [EULA][eula]
-1. [Contact the Codecov Team][email] to receive a Trial License Key
-2. Run our installer: `curl -sSL https://git.io/v4jXc | sh`
-3. Adjust your setup file at `./codecov.yml` [read more][config]
-4. Restart
+Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 
 
 ### Manifest

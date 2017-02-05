@@ -7,7 +7,7 @@ services:
     image: nginx
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
-      # - ./codecov.crt:/etc/nginx/codecov.crt:ro    # Enable SSL: __doc__
+      # - ./codecov.crt:/etc/nginx/codecov.crt:ro    # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
       # - ./codecov.key:/etc/nginx/codecov.key:ro    # [cont] Enable SSL
     links:
       - web
@@ -17,27 +17,31 @@ services:
 
   web:
     image: codecov/enterprise:dockerstore
-    entrypoint: /bin/run web -p 8080 --name web.1
+    entrypoint: /bin/run web
     ports:
-      - "8080"
+      - "5000"
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./git.pem:/config/git.pem:ro       # Enable provider SSL: __doc__
-      # - ./archive:/archive                 # Enable report archiving: __doc__
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
     links:
       - redis
       - postgres
 
+  # web2:  # Ready to scale? https://docs.codecov.io/docs/deploying-with-docker#section-scaling-nodes
+
   worker:
     image: codecov/enterprise:dockerstore
-    entrypoint: /bin/run worker --name worker.1
+    entrypoint: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./git.pem:/config/git.pem:ro       # Enable provider SSL: __doc__
-      # - ./archive:/archive                 # Enable report archiving: __doc__
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
     links:
       - redis
       - postgres
+
+  # worker2:  # Ready to scale? https://docs.codecov.io/docs/deploying-with-docker#section-scaling-nodes
 
   redis:
     # https://hub.docker.com/r/library/redis
