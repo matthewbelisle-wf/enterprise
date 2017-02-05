@@ -61,12 +61,12 @@ elif [ "$proc" = "check" ];
 then
   echo '[docker] Running container health check...'
 
-  res=$(curl -isX GET http://127.0.0.1:8080 --connect-timeout 3 | head -1)
+  res=$(curl -isX GET http://127.0.0.1:8080/ping --connect-timeout 3 | head -1)
 
   if [ "$res" = '' ];
   then
     # try worker
-    exit 0;
+    celery inspect ping --broker=redis://redis:redis@redis:6379
 
   else
     echo '[docker] Web process detected'
