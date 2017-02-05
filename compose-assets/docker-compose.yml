@@ -4,7 +4,7 @@ services:
 
   nginx:
     # https://hub.docker.com/r/library/nginx
-    image: nginx
+    image: nginx:stable-alpine
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
       # - ./codecov.crt:/etc/nginx/codecov.crt:ro    # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
