@@ -61,7 +61,7 @@ elif [ "$proc" = "check" ];
 then
   echo '[docker] Running container health check...'
 
-  if grep "/bin/codecov web";
+  if ps | grep "/bin/codecov web" 1>/dev/null;
   then
     exec codecov test web --config /config/codecov.yml || exit 1
   else
