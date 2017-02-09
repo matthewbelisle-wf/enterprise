@@ -43,40 +43,29 @@ fi
 
 if [ "$proc" = "config" ];
 then
-  codecov config "$@" --config /config/codecov.yml
+  exec codecov config "$@" --config /config/codecov.yml
 
 elif [ "$proc" = "web" ];
 then
   echo '[docker] Starting web process...'
-  codecov web "$@" --config /config/codecov.yml --port 8080
+  exec codecov web "$@" --config /config/codecov.yml
   echo '[docker] Web process exited'
 
 elif [ "$proc" = "worker" ];
 then
   echo '[docker] Starting worker process...'
-  codecov worker "$@" --config /config/codecov.yml
+  exec codecov worker "$@" --config /config/codecov.yml
   echo '[docker] Worker process exited'
 
 elif [ "$proc" = "check" ];
 then
   echo '[docker] Running container health check...'
 
-  res=$(curl -isX GET http://127.0.0.1:8080/ping --connect-timeout 3 | head -1)
-
-  if [ "$res" = '' ];
+  if grep "/bin/codecov web";
   then
-    # try worker
-    celery inspect ping --broker=redis://redis:redis@redis:6379
-
+    exec codecov test web || exit 1
   else
-    echo '[docker] Web process detected'
-    if [ "$res" =  'HTTP/1.1 200 OK' ];
-    then
-      echo '[docker] Web server running properly'
-    else
-      echo '[docker] Web server not responding'
-      exit 1
-    fi
+    exec codecov test worker || exit 1
   fi
 
 else

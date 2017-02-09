@@ -16,7 +16,7 @@ services:
       - "443:443"
 
   web:
-    image: codecov/enterprise:dockerstore
+    image: codecov/enterprise:beta
     entrypoint: /bin/run web
     ports:
       - "5000"
@@ -31,7 +31,7 @@ services:
   # web2:  # Ready to scale? https://docs.codecov.io/docs/deploying-with-docker#section-scaling-nodes
 
   worker:
-    image: codecov/enterprise:dockerstore
+    image: codecov/enterprise:beta
     entrypoint: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
