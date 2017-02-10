@@ -43,18 +43,18 @@ fi
 
 if [ "$proc" = "config" ];
 then
-  exec codecov config "$@" --config /config/codecov.yml
+  codecov config "$@" --config /config/codecov.yml
 
 elif [ "$proc" = "web" ];
 then
   echo '[docker] Starting web process...'
-  exec codecov web "$@" --config /config/codecov.yml
+  codecov web "$@" --config /config/codecov.yml
   echo '[docker] Web process exited'
 
 elif [ "$proc" = "worker" ];
 then
   echo '[docker] Starting worker process...'
-  exec codecov worker "$@" --config /config/codecov.yml
+  codecov worker "$@" --config /config/codecov.yml
   echo '[docker] Worker process exited'
 
 elif [ "$proc" = "check" ];
@@ -65,9 +65,9 @@ then
 
   if echo "$_ps" | grep "/bin/codecov web" 1>/dev/null;
   then
-    exec codecov test web --url http://127.0.0.1:5000/ping --config /config/codecov.yml || exit 1
+    codecov test web --url http://127.0.0.1:5000/ping --config /config/codecov.yml || exit 1
   else
-    exec codecov test worker --config /config/codecov.yml || exit 1
+    codecov test worker --config /config/codecov.yml || exit 1
   fi
 
 else

@@ -1,5 +1,4 @@
-version: '2'
-
+version: "3"
 services:
 
   nginx:
@@ -11,13 +10,15 @@ services:
       # - ./codecov.key:/etc/nginx/codecov.key:ro    # [cont] Enable SSL
     links:
       - web
+    depends_on:
+      - web
     ports:
       - "80:80"
       - "443:443"
 
   web:
     image: codecov/enterprise:beta
-    entrypoint: /bin/run web
+    command: /bin/run web
     ports:
       - "5000"
     volumes:
@@ -27,12 +28,13 @@ services:
     links:
       - redis
       - postgres
-
-  # web2:  # Ready to scale? https://docs.codecov.io/docs/deploying-with-docker#section-scaling-nodes
+    depends_on:
+      - redis
+      - postgres
 
   worker:
     image: codecov/enterprise:beta
-    entrypoint: /bin/run worker
+    command: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
       # - ./github_enterprise.pem:/config/github_enterprise.pem:ro       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
@@ -40,8 +42,9 @@ services:
     links:
       - redis
       - postgres
-
-  # worker2:  # Ready to scale? https://docs.codecov.io/docs/deploying-with-docker#section-scaling-nodes
+    depends_on:
+      - redis
+      - postgres
 
   redis:
     # https://hub.docker.com/r/library/redis
