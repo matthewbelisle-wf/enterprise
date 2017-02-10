@@ -28,6 +28,12 @@ fi
 proc="$1"
 shift
 
+stop_codecov() {
+  kill -TERM "$child"
+}
+
+trap stop_codecov SIGTERM
+
 export DOCKER="true"
 
 if [ -f "/codecov.yml" ];
@@ -48,13 +54,23 @@ then
 elif [ "$proc" = "web" ];
 then
   echo '[docker] Starting web process...'
-  codecov web "$@" --config /config/codecov.yml
+
+  codecov web "$@" --config /config/codecov.yml  &
+
+  child=$!
+  wait "$child"
+
   echo '[docker] Web process exited'
 
 elif [ "$proc" = "worker" ];
 then
   echo '[docker] Starting worker process...'
-  codecov worker "$@" --config /config/codecov.yml
+
+  codecov worker "$@" --config /config/codecov.yml  &
+
+  child=$!
+  wait "$child"
+
   echo '[docker] Worker process exited'
 
 elif [ "$proc" = "check" ];
