@@ -48,7 +48,6 @@ then
 else
   # remove null values from the yaml, just to be safe
   tr < /config/codecov.yml -d '\000' > /config/codecov.cleaned.yml
-  cat /config/codecov.cleaned.yml
 fi
 
 if [ "$proc" = "config" ];
@@ -85,9 +84,9 @@ then
 
   if echo "$_ps" | grep "/bin/codecov web" 1>/dev/null;
   then
-    codecov test web --url http://127.0.0.1:5000/ping --config /config/codecov.yml || exit 1
+    codecov test web --url http://127.0.0.1:5000/ping --config /config/codecov.cleaned.yml || exit 1
   else
-    codecov test worker --config /config/codecov.yml || exit 1
+    codecov test worker --config /config/codecov.cleaned.yml || exit 1
   fi
 
 else
