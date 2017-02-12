@@ -2,29 +2,6 @@
 
 set -e
 
-show_help() {
-cat << EOF
-
-  web        Start web process
-          -p :int      Port to listen for inbound traffic (Default: 80)
-
-  worker     Start worker process
-          -c :int      Number or celery concurrency (Default: 1) Recommended 1-4
-          -q :str      Name of queue to process tasks (Default: "default")
-
-  config     Validates the codecov.yml structure
-
-  check      Run Docker container health check
-
-EOF
-}
-
-if [ "$#" == "0" ];
-then
-	show_help
-	exit 0
-fi
-
 proc="$1"
 shift
 
@@ -90,7 +67,8 @@ then
   fi
 
 else
-  show_help
+  echo '[docker] no entrypoint specified'
+  exit 1
 fi
 
 exit 0
