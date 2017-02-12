@@ -7,4 +7,5 @@ setup:
   enterprise_license: null
   # Replace with a random string
   # https://docs.codecov.io/docs/configuration#section-cookie-secret
-  cookie_secret: null
+  http:
+    cookie_secret: null
