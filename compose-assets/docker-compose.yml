@@ -54,4 +54,7 @@ services:
     # https://hub.docker.com/r/library/postgres
     image: postgres:9.3
     volumes:
-      - /var/lib/postgresql/data
+      - data-volume:/var/lib/postgresql/data
+
+volumes:
+  data-volume:
