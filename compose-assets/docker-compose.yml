@@ -24,7 +24,7 @@ services:
       - "5000"
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
+      - archive-volume:/archive
       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
       # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
     links:
@@ -39,7 +39,7 @@ services:
     command: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
+      - archive-volume:/archive
       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
       # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
     links:
@@ -59,3 +59,4 @@ services:
 
 volumes:
   data-volume:
+  archive-volume:
