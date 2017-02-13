@@ -6,8 +6,9 @@ services:
     image: nginx:stable-alpine
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
-      # - ./codecov.crt:/etc/nginx/codecov.crt:ro    # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
-      # - ./codecov.key:/etc/nginx/codecov.key:ro    # [cont] Enable SSL
+      # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
+      # - ./codecov.crt:/etc/nginx/codecov.crt:ro
+      # - ./codecov.key:/etc/nginx/codecov.key:ro
     links:
       - web
     depends_on:
@@ -23,8 +24,9 @@ services:
       - "5000"
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
       # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
+      # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
     links:
       - redis
       - postgres
@@ -37,8 +39,9 @@ services:
     command: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
-      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro       # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
       # - ./archive:/archive                                             # Enable report archiving: https://docs.codecov.io/docs/deploying-with-docker#section-enable-report-archiving
+      # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
     links:
       - redis
       - postgres
@@ -47,11 +50,9 @@ services:
       - postgres
 
   redis:
-    # https://hub.docker.com/r/library/redis
     image: redis:3.0.7-alpine
 
   postgres:
-    # https://hub.docker.com/r/library/postgres
     image: postgres:9.3
     volumes:
       - data-volume:/var/lib/postgresql/data
