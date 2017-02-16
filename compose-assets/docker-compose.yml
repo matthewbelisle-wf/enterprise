@@ -1,0 +1,62 @@
+version: "3"
+services:
+
+  nginx:
+    # https://hub.docker.com/r/library/nginx
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx.config:/etc/nginx/nginx.conf:ro
+      # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
+      # - ./codecov.crt:/etc/nginx/codecov.crt:ro
+      # - ./codecov.key:/etc/nginx/codecov.key:ro
+    links:
+      - web
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+
+  web:
+    image: codecov/enterprise:beta
+    command: /bin/run web
+    ports:
+      - "5000"
+    volumes:
+      - ./codecov.yml:/config/codecov.yml:ro
+      - archive-volume:/archive
+      # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
+    links:
+      - redis
+      - postgres
+    depends_on:
+      - redis
+      - postgres
+
+  worker:
+    image: codecov/enterprise:beta
+    command: /bin/run worker
+    volumes:
+      - ./codecov.yml:/config/codecov.yml:ro
+      - archive-volume:/archive
+      # Enable provider SSL: https://docs.codecov.io/docs/deploying-with-docker#section-adding-ssl-pem-for-your-git-provider
+      # - ./github_enterprise.pem:/config/github_enterprise.pem:ro
+    links:
+      - redis
+      - postgres
+    depends_on:
+      - redis
+      - postgres
+
+  redis:
+    image: redis:3.0.7-alpine
+
+  postgres:
+    image: postgres:9.3
+    volumes:
+      - data-volume:/var/lib/postgresql/data
+
+volumes:
+  data-volume:
+  archive-volume:

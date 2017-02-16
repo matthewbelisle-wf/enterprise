@@ -12,12 +12,6 @@ setup:
   cookie_secret: null            # (required) string used to encrypt secure cookies
   expire_user_cookies_days: 365  # number of days cookies are valid for
 
-  # # uncomment this section below to enable report archiving
-  # archive:
-  #   destination: disk
-  #   directory: /archive
-  #   hash_key: "random_string"
-
 services:
   database_url: null            # (required) postgres url [may leave empty for when using Docker]
   redis_url: null               # (required) used for celery and storing reports before processing [may leave empty for when using Docker]
