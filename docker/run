@@ -66,6 +66,19 @@ then
     codecov test worker --config /config/codecov.cleaned.yml || exit 1
   fi
 
+elif [ "$proc" = "monitor" ];
+then
+  echo '[docker] Starting monitor process...'
+
+  codecov monitor \
+    --config /config/codecov.cleaned.yml \
+  &
+
+  child=$!
+  wait "$child"
+
+  echo '[docker] Monitor process exited'
+
 else
   echo '[docker] no entrypoint specified'
   exit 1

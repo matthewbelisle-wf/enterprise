@@ -49,6 +49,21 @@ services:
       - redis
       - postgres
 
+  monitor:
+    image: codecov/enterprise:latest
+    command: /bin/run monitor
+    environment:
+      # Uncomment below to enable http basic auto to access monitor interface
+      # FLOWER_BASIC_AUTH: "foo:bar"
+    ports:
+      - "5000"
+    links:
+      - redis
+      - postgres
+    depends_on:
+      - redis
+      - postgres
+
   redis:
     image: redis:3.0.7-alpine
 
