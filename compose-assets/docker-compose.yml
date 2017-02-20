@@ -52,9 +52,11 @@ services:
   monitor:
     image: codecov/enterprise:latest
     command: /bin/run monitor
-    environment:
-      # Uncomment below to enable http basic auto to access monitor interface
-      # FLOWER_BASIC_AUTH: "foo:bar"
+    # Uncomment below to enable http basic auto to access monitor interface
+    # environment:
+    #   FLOWER_BASIC_AUTH: "foo:bar"
+    volumes:
+      - ./codecov.yml:/config/codecov.yml:ro
     ports:
       - "5000"
     links:
