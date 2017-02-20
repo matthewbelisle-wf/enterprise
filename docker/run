@@ -29,13 +29,16 @@ fi
 
 if [ "$proc" = "config" ];
 then
-  codecov config "$@" --config /config/codecov.cleaned.yml
+  codecov config "$@" \
+    --config /config/codecov.cleaned.yml
 
 elif [ "$proc" = "web" ];
 then
   echo '[docker] Starting web process...'
 
-  codecov web "$@" --config /config/codecov.cleaned.yml  &
+  codecov web \
+    --config /config/codecov.cleaned.yml \
+  &
 
   child=$!
   wait "$child"
@@ -46,7 +49,9 @@ elif [ "$proc" = "worker" ];
 then
   echo '[docker] Starting worker process...'
 
-  codecov worker "$@" --config /config/codecov.cleaned.yml  &
+  codecov worker
+    --config /config/codecov.cleaned.yml \
+  &
 
   child=$!
   wait "$child"
@@ -61,9 +66,14 @@ then
 
   if echo "$_ps" | grep "/bin/codecov web" 1>/dev/null;
   then
-    codecov test web --url http://127.0.0.1:5000/ping --config /config/codecov.cleaned.yml || exit 1
+    codecov test web \
+      --url http://127.0.0.1:5000/ping \
+      --config /config/codecov.cleaned.yml \
+    || exit 1
   else
-    codecov test worker --config /config/codecov.cleaned.yml || exit 1
+    codecov test worker \
+      --config /config/codecov.cleaned.yml \
+    || exit 1
   fi
 
 elif [ "$proc" = "monitor" ];

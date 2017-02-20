@@ -18,7 +18,7 @@ services:
       - "443:443"
 
   web:
-    image: codecov/enterprise:beta
+    image: codecov/enterprise:latest
     command: /bin/run web
     ports:
       - "5000"
@@ -35,7 +35,7 @@ services:
       - postgres
 
   worker:
-    image: codecov/enterprise:beta
+    image: codecov/enterprise:latest
     command: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
