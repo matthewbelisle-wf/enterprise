@@ -1,5 +1,8 @@
 # Codecov Enterprise
-> Code coverage done right. Empower your developers with Codecov to improve code quality.
+> Code coverage done right.® Empower your developers with Codecov to improve code quality.
+
+![docker_container a 2x 1](https://cloud.githubusercontent.com/assets/2041757/23514065/1f2c138a-ff34-11e6-9c09-a9f17179a1a8.png)
+
 
 Testing software is crucial for deploying healthy code. Codecov provides metrics and insight in the results of tests through code coverage reports. Coverage reports are used to determine what lines of code were tested and what lines were missed entirely. These reports are uploaded to Codecov to be analyzed and stored historically. This information helps your developers save time tracking down bugs and commit stronger code that is well tested, to increase code coverage to 100%.
 
