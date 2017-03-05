@@ -1,7 +1,6 @@
 FROM            alpine:3.5
 MAINTAINER      Codecov <enterprise@codecov.io>
 
-RUN             apk update
 RUN             apk add --no-cache --upgrade python-dev postgresql-dev curl openssl
 RUN             mkdir /config
 COPY            docker/cacert.pem /config/cacert.pem
