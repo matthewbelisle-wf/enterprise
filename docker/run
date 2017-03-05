@@ -49,7 +49,7 @@ elif [ "$proc" = "worker" ];
 then
   echo '[docker] Starting worker process...'
 
-  codecov worker
+  codecov worker \
     --config /config/codecov.cleaned.yml \
   &
 
