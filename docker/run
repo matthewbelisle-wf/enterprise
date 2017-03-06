@@ -16,7 +16,7 @@ export DOCKER="true"
 if [ -f "/codecov.yml" ];
 then
   # move coddecov to config folder
-  mv /codecov.yml /config/codecov.yml
+  cp /codecov.yml /config/codecov.yml
 fi
 
 if [ ! -f "/config/codecov.yml" ];
