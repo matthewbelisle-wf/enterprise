@@ -11,8 +11,10 @@ services:
       # - ./codecov.key:/etc/nginx/codecov.key:ro
     links:
       - web
+      - monitor
     depends_on:
       - web
+      - monitor
     ports:
       - "80:80"
       - "443:443"
@@ -54,7 +56,7 @@ services:
     command: /bin/run monitor
     # Uncomment below to enable http basic auto to access monitor interface
     # environment:
-    #   FLOWER_BASIC_AUTH: "foo:bar"
+    #   BASIC_AUTH: "foo:bar"
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
     ports:
