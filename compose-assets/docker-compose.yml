@@ -6,6 +6,7 @@ services:
     image: nginx:stable-alpine
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
+      - archive-volume:/archive
       # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
       # - ./codecov.crt:/etc/nginx/codecov.crt:ro
       # - ./codecov.key:/etc/nginx/codecov.key:ro
