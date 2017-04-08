@@ -70,6 +70,8 @@ services:
 
   redis:
     image: redis:3.0.7-alpine
+    volumes:
+      - redis-volume:/data
 
   postgres:
     image: postgres:9.3
@@ -78,4 +80,5 @@ services:
 
 volumes:
   data-volume:
+  redis-volume:
   archive-volume:
