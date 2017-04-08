@@ -77,9 +77,9 @@ services:
   postgres:
     image: postgres:9.3
     volumes:
-      - data-volume:/var/lib/postgresql/data
+      - postgres-volume:/var/lib/postgresql/data
 
 volumes:
-  data-volume:
+  postgres-volume:
   redis-volume:
   archive-volume:
