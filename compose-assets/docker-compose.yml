@@ -6,6 +6,7 @@ services:
     image: nginx:stable-alpine
     volumes:
       - ./nginx.config:/etc/nginx/nginx.conf:ro
+      - archive-volume:/archive
       # Enable SSL: https://docs.codecov.io/v4.3.0/docs/deploying-with-docker#section-enable-ssl
       # - ./codecov.crt:/etc/nginx/codecov.crt:ro
       # - ./codecov.key:/etc/nginx/codecov.key:ro
@@ -70,12 +71,15 @@ services:
 
   redis:
     image: redis:3.0.7-alpine
+    volumes:
+      - redis-volume:/data
 
   postgres:
     image: postgres:9.3
     volumes:
-      - data-volume:/var/lib/postgresql/data
+      - postgres-volume:/var/lib/postgresql/data
 
 volumes:
-  data-volume:
+  postgres-volume:
+  redis-volume:
   archive-volume:
