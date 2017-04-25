@@ -22,6 +22,7 @@ fi
 if [ ! -f "/config/codecov.yml" ];
 then
   echo '[docker] No codecov.yml file found.'
+  touch /config/codecov.cleaned.yml
 else
   # remove null values from the yaml, just to be safe
   tr < /config/codecov.yml -d '\000' > /config/codecov.cleaned.yml
