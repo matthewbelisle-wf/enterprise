@@ -21,7 +21,7 @@ services:
       - "443:443"
 
   web:
-    image: codecov/enterprise:latest
+    image: codecov/enterprise:v4.3.9
     command: /bin/run web
     ports:
       - "5000"
@@ -38,7 +38,7 @@ services:
       - postgres
 
   worker:
-    image: codecov/enterprise:latest
+    image: codecov/enterprise:v4.3.9
     command: /bin/run worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
@@ -53,7 +53,7 @@ services:
       - postgres
 
   monitor:
-    image: codecov/enterprise:latest
+    image: codecov/enterprise:v4.3.9
     command: /bin/run monitor
     # Uncomment below to enable http basic auto to access monitor interface
     # environment:
