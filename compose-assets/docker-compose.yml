@@ -12,10 +12,8 @@ services:
       # - ./codecov.key:/etc/nginx/codecov.key:ro
     links:
       - web
-      - monitor
     depends_on:
       - web
-      - monitor
     ports:
       - "80:80"
       - "443:443"
