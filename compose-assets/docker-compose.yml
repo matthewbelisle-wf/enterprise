@@ -33,7 +33,7 @@ services:
     depends_on:
       - web
   web:
-    image: codecov/enterprise:v4.4.0
+    image: codecov/enterprise:v4.4.2
     command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
@@ -46,7 +46,7 @@ services:
       - "traefik.port=5000"
       - "traefik.frontend.rule=PathPrefix: /"
     environment:
-      #- STATSD_HOST=statsd
+      - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
     networks:
       - codecov
@@ -54,13 +54,13 @@ services:
       - minio
 
   worker:
-    image: codecov/enterprise:v4.4.0
+    image: codecov/enterprise:v4.4.2
     command: worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
       - archive-volume:/archive
     environment:
-      #- STATSD_HOST=statsd
+      - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
     networks:
       - codecov
@@ -98,6 +98,15 @@ services:
       - MINIO_SECRET_KEY=codecov-default-secret
     volumes:
       - archive-volume:/export
+    networks:
+      - codecov
+  
+  statsd:
+    image: prom/statsd-exporter:v0.6.0
+    command: -statsd.listen-udp=:8125 -statsd.listen-tcp=:8125
+    ports:
+      - "8125"
+      - "9102"
     networks:
       - codecov
 
