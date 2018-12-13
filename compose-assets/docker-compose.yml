@@ -52,6 +52,7 @@ services:
       - codecov
     depends_on:
       - minio
+      - statsd
 
   worker:
     image: codecov/enterprise:v4.4.2
@@ -66,6 +67,7 @@ services:
       - codecov
     depends_on:
       - minio
+      - statsd
 
   redis:
     image: redis:4.0-alpine
