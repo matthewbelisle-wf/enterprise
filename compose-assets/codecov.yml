@@ -9,3 +9,8 @@ setup:
   # https://docs.codecov.io/docs/configuration#section-cookie-secret
   http:
     cookie_secret: null
+services:
+  minio:
+    client_uploads: true
+    host: minio
+    port: 9000
