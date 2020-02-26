@@ -77,7 +77,7 @@ services:
       - codecov
 
   postgres:
-    image: postgres:10-alpine
+    image: postgres:10.11-alpine
     volumes:
       - postgres10-volume:/var/lib/postgresql/data
     ports:
