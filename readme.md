@@ -15,11 +15,12 @@ Commit statuses and pull request comments are key to maintaining a healthy produ
 Our unique Coverage Diff® will describe the commit in relation to its impact on tests which significantly improves code reviews.
 
 ### Usage
-> Install in less then 3 minutes: https://youtu.be/wADVzguG3F8
 
-Codecov currently requires your team uses one or more of the following: GitHub, GitHub Enterprise, GitLab, Gitlab CE, GitLab Enterprise, Bitbucket and Bitbucket Server (formally Stash).
+Codecov currently requires your team to use one or more of the following: GitHub, GitHub Enterprise, GitLab, Gitlab CE, GitLab Enterprise, Bitbucket and Bitbucket Server (formerly Stash).
 
 Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
+
+Codecov Enterprise supports three main deployment strategies, you can see which best suits your needs here: https://docs.codecov.io/docs/codecov-enterprise-deployment-strategies
 
 
 ### Manifest
@@ -33,8 +34,6 @@ Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 - **License link** https://git.io/voUcJ
 - **Screenshots**
 - **Search tags** code coverage, static analysis, dev-ops, continuous integration, software development, developer tools
-
-
 
 [config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
