@@ -30,7 +30,7 @@ Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 - **Company icon/logo** https://git.io/voUn2
 - **Product icon/logo** https://git.io/voUn2
 - **Support link** https://codecov.io/support
-- **License link** https://git.io/voUcJ
+- **License link** https://codecov.io/eula
 - **Screenshots**
 - **Search tags** code coverage, static analysis, dev-ops, continuous integration, software development, developer tools
 
@@ -38,4 +38,4 @@ Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 
 [config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
-[eula]: https://git.io/voUcJ
+[eula]: https://codecov.io/eula
