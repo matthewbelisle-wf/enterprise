@@ -31,10 +31,10 @@ Codecov Enterprise supports three main deployment strategies, you can see which 
 - **Company icon/logo** https://github.com/codecov/media/tree/master/logos
 - **Product icon/logo** https://github.com/codecov/media/tree/master/logos
 - **Support link** https://codecov.io/support
-- **License link** https://git.io/voUcJ
+- **License link** https://codecov.io/eula
 - **Screenshots**
 - **Search tags** code coverage, static analysis, dev-ops, continuous integration, software development, developer tools
 
 [config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
-[eula]: https://git.io/voUcJ
+[eula]: https://codecov.io/eula
