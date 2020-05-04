@@ -27,8 +27,8 @@ Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 - **Website** https://codecov.io
 - **Phone number** 1 (415) 854-9184
 - **Valid company email** [enterprise@codecov.io][email]
-- **Company icon/logo** https://git.io/voUn2
-- **Product icon/logo** https://git.io/voUn2
+- **Company icon/logo** https://github.com/codecov/media/tree/master/logos
+- **Product icon/logo** https://github.com/codecov/media/tree/master/logos
 - **Support link** https://codecov.io/support
 - **License link** https://git.io/voUcJ
 - **Screenshots**
