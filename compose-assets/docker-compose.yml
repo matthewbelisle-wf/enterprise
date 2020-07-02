@@ -64,6 +64,8 @@ services:
     environment:
       - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
       - codecov
     depends_on:
