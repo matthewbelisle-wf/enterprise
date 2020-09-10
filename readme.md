@@ -2,6 +2,7 @@
 > Code coverage done right.® Empower your developers with Codecov to improve code quality.
 
 [![docker_container a 2x 1](https://cloud.githubusercontent.com/assets/2041757/23514065/1f2c138a-ff34-11e6-9c09-a9f17179a1a8.png)](https://store.docker.com/images/ba08bd82-f83c-42bd-be9d-68974637dea5)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fenterprise.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fenterprise?ref=badge_shield)
 
 
 Testing software is crucial for deploying healthy code. Codecov provides metrics and insight in the results of tests through code coverage reports. Coverage reports are used to determine what lines of code were tested and what lines were missed entirely. These reports are uploaded to Codecov to be analyzed and stored historically. This information helps your developers save time tracking down bugs and commit stronger code that is well tested, to increase code coverage to 100%.
@@ -38,3 +39,7 @@ Codecov Enterprise supports three main deployment strategies, you can see which 
 [config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
 [eula]: https://codecov.io/eula
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcodecov%2Fenterprise.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcodecov%2Fenterprise?ref=badge_large)
