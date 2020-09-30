@@ -33,7 +33,7 @@ services:
     depends_on:
       - web
   web:
-    image: codecov/enterprise-web:v4.5.0
+    image: codecov/enterprise-web:v4.5.5-6727ba4
     command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
@@ -55,7 +55,7 @@ services:
       - statsd
 
   worker:
-    image: codecov/enterprise-worker:v4.5.0
+    image: codecov/enterprise-worker:v4.5.5-49013fc
     command: worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
