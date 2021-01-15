@@ -16,7 +16,7 @@ services:
       - --entryPoints=Name:http Address::80 Compress::true
       - --defaultEntryPoints=http
       # - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https Compress::true
-      # - --entryPoints=Name:https Address::443 TLS:/ssl/ssl.crt,/ssl/ssl.key Compress::true
+      # - --entryPoints=Name:https Address::443 TLS:/ssl/ssl.crt,/ssl/ssl.key Compress::true TLS TLS.MinVersion:VersionTLS12 TLS.CipherSuites:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
       # - --defaultentrypoints=http,https
 
     volumes:
@@ -33,10 +33,11 @@ services:
     depends_on:
       - web
   web:
-    image: codecov/enterprise:v4.4.10
+    image: codecov/enterprise-web:latest-stable
     command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
+      - archive-volume:/archive
     ports:
       - "5000"
     labels:
@@ -54,13 +55,17 @@ services:
       - statsd
 
   worker:
-    image: codecov/enterprise:v4.4.10
+    image: codecov/enterprise-worker:latest-stable
     command: worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
+      - ./config:/config
+      - archive-volume:/archive
     environment:
       - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
       - codecov
     depends_on:
