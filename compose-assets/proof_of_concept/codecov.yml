@@ -14,7 +14,7 @@ github_enterprise: #for other repo providers see: https://docs.codecov.io/docs/s
   client_secret: <your-oauth-app-client-secret>
 services:
   database_url: "postgres://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
-  postgres_url: "redis_url: redis://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
+  postgres_url: "redis://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
   minio: # S3 configuration is below. For GCS configuration, see: https://docs.codecov.io/changelog/release-notes-for-codecov-v448#you-deploy-using-docker-compose-on-one-or-many-virtual-machines-but-your-minio-server-is-backed-by-s3-or-google-cloud-storage
     host: s3.amazonaws.com
     bucket: <bucket-name>
