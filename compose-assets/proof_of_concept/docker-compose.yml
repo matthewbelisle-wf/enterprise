@@ -33,7 +33,7 @@ services:
     depends_on:
       - web
   web:
-    image: codecov/enterprise-web:latest-stable
+    image: codecov/enterprise-web:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
     command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
@@ -55,7 +55,7 @@ services:
       - statsd
 
   worker:
-    image: codecov/enterprise-worker:latest-stable
+    image: codecov/enterprise-worker:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
     command: worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
