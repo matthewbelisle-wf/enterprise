@@ -1,0 +1,22 @@
+setup:
+  # Replace with the http location of your Codecov. Remove any trailing slashes (e.g., "https://my.codecov.com" instead of "https://my.codecov.com/")
+  # https://docs.codecov.io/docs/configuration#section-codecov-url
+  codecov_url: null
+  # Replace with your Codecov Enterprise License key
+  # https://docs.codecov.io/docs/configuration#section-enterprise-license
+  enterprise_license: null
+  # Replace with a random string
+  # https://docs.codecov.io/docs/configuration#section-cookie-secret
+  http:
+    cookie_secret: null
+services:
+  database_url: "postgres://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
+  postgres_url: "redis_url: redis://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
+  minio: # S3 configuration is below. For GCS configuration, see: https://docs.codecov.io/changelog/release-notes-for-codecov-v448#you-deploy-using-docker-compose-on-one-or-many-virtual-machines-but-your-minio-server-is-backed-by-s3-or-google-cloud-storage
+    host: s3.amazonaws.com
+    bucket: <bucket-name>
+    region: <bucket-region>
+    verify_ssl: true
+    access_key_id: <aws-iam-access-key> #only required if you're not using AWS IAM Roles for S3
+    secret_access_key: <aws-iam-secret> #only required if you're not using AWS IAM Roles for S3
+
