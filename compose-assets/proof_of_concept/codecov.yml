@@ -9,6 +9,9 @@ setup:
   # https://docs.codecov.io/docs/configuration#section-cookie-secret
   http:
     cookie_secret: null
+github_enterprise: #for other repo providers see: https://docs.codecov.io/docs/set-up-oauth-login
+  client_id: <your-oauth-app-client-id>
+  client_secret: <your-oauth-app-client-secret>
 services:
   database_url: "postgres://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
   postgres_url: "redis_url: redis://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
