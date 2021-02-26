@@ -22,4 +22,4 @@ services:
     verify_ssl: true
     access_key_id: <aws-iam-access-key> #only required if you're not using AWS IAM Roles for S3
     secret_access_key: <aws-iam-secret> #only required if you're not using AWS IAM Roles for S3
-
+    iam_auth: <boolean, default false> # set to true in AWS to attempt to authentice via Instance role
