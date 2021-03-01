@@ -33,7 +33,6 @@ services:
       - web
   web:
     image: codecov/enterprise-web:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
-    command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
     ports:
@@ -50,7 +49,17 @@ services:
       - codecov
     depends_on:
       - statsd
-
+  api:
+    image: codecov/enterprise-api:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
+    volumes:
+      - ./codecov.yml:/config/codecov.yml:ro
+    environment:
+      - STATSD_HOST=statsd
+      - DATADOG_TRACE_ENABLED=false
+    networks:
+      - codecov
+    depends_on:
+      - statsd
   worker:
     image: codecov/enterprise-worker:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
     command: worker

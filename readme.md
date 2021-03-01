@@ -23,8 +23,7 @@ Read the docs to install: https://docs.codecov.io/docs/deploying-with-docker
 
 Codecov Enterprise supports three main deployment strategies, you can see which best suits your needs here: https://docs.codecov.io/docs/codecov-enterprise-deployment-strategies
 
-
-### Manifest
+These docs and examples are for v4.6.0 and higher. If you are using v4.5.* please see the docs at https://github.com/codecov/enterprise/tree/v4.5
 
 - **Website** https://codecov.io
 - **Phone number** 1 (415) 854-9184

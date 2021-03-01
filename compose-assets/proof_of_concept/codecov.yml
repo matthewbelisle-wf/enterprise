@@ -2,6 +2,8 @@ setup:
   # Replace with the http location of your Codecov. Remove any trailing slashes (e.g., "https://my.codecov.com" instead of "https://my.codecov.com/")
   # https://docs.codecov.io/docs/configuration#section-codecov-url
   codecov_url: null
+  codecov_api_url: null # this defaults to <codecov-url> and is designed to work out of the box like this
+  api_allowed_hosts: [] # this defaults to <codecov-url> and is designed to work out of the box like this
   # Replace with your Codecov Enterprise License key
   # https://docs.codecov.io/docs/configuration#section-enterprise-license
   enterprise_license: null

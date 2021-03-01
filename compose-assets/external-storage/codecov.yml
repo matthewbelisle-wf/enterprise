@@ -2,6 +2,9 @@ setup:
   # Replace with the http location of your Codecov
   # https://docs.codecov.io/docs/configuration#section-codecov-url
   codecov_url: "<codecov-url>"
+  codecov_api_url: "<codecov-url>" # this defaults to <codecov-url> and is designed to work out of the box like this
+  api_allowed_hosts:
+    - "<codecov-url>" # this defaults to <codecov-url> and is designed to work out of the box like this
   # Replace with your Codecov Self-Hosted Key
   # https://docs.codecov.io/docs/configuration#section-enterprise-license
   enterprise_license: "<license-key>"
