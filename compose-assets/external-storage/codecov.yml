@@ -1,0 +1,26 @@
+setup:
+  # Replace with the http location of your Codecov
+  # https://docs.codecov.io/docs/configuration#section-codecov-url
+  codecov_url: "<codecov-url>"
+  # Replace with your Codecov Self-Hosted Key
+  # https://docs.codecov.io/docs/configuration#section-enterprise-license
+  enterprise_license: "<license-key>"
+  # Replace with a random string
+  # https://docs.codecov.io/docs/configuration#section-cookie-secret
+  http:
+    cookie_secret: "<your-cookie-secret>"
+github:
+  client_id: "<client-id>"
+  client_secret: "<client-secret>"
+  global_upload_token: "<upload-token>"
+services:
+  database_url: "<postgres-rds-url>"
+  redis_url: "<redis-elasticache-url>"
+  minio:
+     host: s3.amazonaws.com # or storage.googleapis.com if using GCS
+     bucket: <bucket-name>
+     region: <bucket-region>
+     verify_ssl: true
+     access_key_id: <aws-iam-access-key> # or <gcs-hmac-key> if using GCS
+     secret_access_key: <aws-iam-secret> # or <gcs-hmac-secret> if using GCS
+     iam_auth: <boolean, default false> # set to true in AWS to attempt to authentice via Instance role

@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   traefik:
@@ -16,7 +16,7 @@ services:
       - --entryPoints=Name:http Address::80 Compress::true
       - --defaultEntryPoints=http
       # - --entrypoints=Name:http Address::80 Redirect.EntryPoint:https Compress::true
-      # - --entryPoints=Name:https Address::443 TLS:/ssl/ssl.crt,/ssl/ssl.key Compress::true
+      # - --entryPoints=Name:https Address::443 TLS:/ssl/ssl.crt,/ssl/ssl.key Compress::true TLS TLS.MinVersion:VersionTLS12 TLS.CipherSuites:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
       # - --defaultentrypoints=http,https
 
     volumes:
@@ -25,26 +25,26 @@ services:
       # NOTE: Provide the SSL certs in the ./config folder below
       # - ./config:/ssl
     ports:
-      - '80:80'
-      - '8080:8080'
-      - '443:443'
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
     networks:
       - codecov
     depends_on:
       - web
   web:
-    image: codecov/enterprise-web:v4.5.5-6727ba4
+    image: codecov/enterprise-web:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
     command: web
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
       - archive-volume:/archive
     ports:
-      - '5000'
+      - "5000"
     labels:
-      - 'traefik.tags=web'
-      - 'traefik.backend=web'
-      - 'traefik.port=5000'
-      - 'traefik.frontend.rule=PathPrefix: /'
+      - "traefik.tags=web"
+      - "traefik.backend=web"
+      - "traefik.port=5000"
+      - "traefik.frontend.rule=PathPrefix: /"
     environment:
       - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
@@ -55,7 +55,7 @@ services:
       - statsd
 
   worker:
-    image: codecov/enterprise-worker:v4.5.5-49013fc
+    image: codecov/enterprise-worker:latest-stable #note: this is for setup purposes only, be sure to pin to the latest release from our changelog: https://docs.codecov.io/changelog
     command: worker
     volumes:
       - ./codecov.yml:/config/codecov.yml:ro
@@ -64,6 +64,8 @@ services:
     environment:
       - STATSD_HOST=statsd
       - DATADOG_TRACE_ENABLED=false
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     networks:
       - codecov
     depends_on:
@@ -82,18 +84,7 @@ services:
     volumes:
       - postgres10-volume:/var/lib/postgresql/data
     ports:
-      - '9432:5432'
-    networks:
-      - codecov
-
-  postgres_exporter:
-    image: wrouesnel/postgres_exporter
-    ports:
-      - '9187:9187'
-    environment:
-      - DATA_SOURCE_NAME=postgresql://postgres@postgres:9432/data?sslmode=disable
-    depends_on:
-      - postgres
+      - "9432:5432"
     networks:
       - codecov
 
@@ -101,12 +92,12 @@ services:
     image: minio/minio:RELEASE.2019-10-02T21-19-38Z
     command: server /export
     labels:
-      - 'traefik.tags=web'
-      - 'traefik.backend=minio'
-      - 'traefik.port=9000'
-      - 'traefik.frontend.rule=PathPrefix: /archive,/minio'
+      - "traefik.tags=web"
+      - "traefik.backend=minio"
+      - "traefik.port=9000"
+      - "traefik.frontend.rule=PathPrefix: /archive,/minio"
     ports:
-      - '9000'
+      - "9000"
     environment:
       - MINIO_ACCESS_KEY=codecov-default-key
       - MINIO_SECRET_KEY=codecov-default-secret
@@ -114,51 +105,13 @@ services:
       - archive-volume:/export
     networks:
       - codecov
-
+  
   statsd:
     image: prom/statsd-exporter:v0.6.0
     command: -statsd.listen-udp=:8125 -statsd.listen-tcp=:8125
     ports:
-      - '8125:8125'
-      - '9102:9102'
-    networks:
-      - codecov
-
-  grafana:
-    image: codecov/grafana
-    labels:
-      - 'traefik.tags=web'
-      - 'traefik.backend=grafana'
-      - 'traefik.port=3000'
-      - 'traefik.frontend.rule=Host: grafana.${DNS:-localhost}'
-    ports:
-      - '3000:3000'
-    networks:
-      - codecov
-    depends_on:
-      - web
-
-  celery_exporter:
-    image: ovalmoney/celery-exporter
-    command: --listen-address 0.0.0.0:8888
-    ports:
-      - '8888:8888'
-    depends_on:
-      - redis
-    networks:
-      - codecov
-
-  prometheus:
-    image: codecov/prometheus
-    labels:
-      - 'traefik.tags=web'
-      - 'traefik.backend=prometheus'
-      - 'traefik.port=9090'
-      - 'traefik.frontend.rule=Host: prometheus.${DNS:-localhost}'
-    volumes:
-      - prometheus-volume:/prometheus
-    ports:
-      - '9090:9090'
+      - "8125"
+      - "9102"
     networks:
       - codecov
 
@@ -166,7 +119,6 @@ volumes:
   postgres10-volume:
   redis-volume:
   archive-volume:
-  prometheus-volume:
 
 networks:
   codecov:
