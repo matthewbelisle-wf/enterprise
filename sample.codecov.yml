@@ -1,10 +1,12 @@
 # ========================================================================================
 #                 Codecov Enterprise: Sample codecov.yml config file
 # ========================================================================================
-#          Learn more at https://github.com/codecov/enterprise/wiki/Configuration
+#          Learn more at https://docs.codecov.io/docs/codecov-yaml
 
 setup:
   codecov_url: null              # (required) the url endpoint for your Codecov instance
+  codecov_api_url: null          # (optional) the url endpoint for your Codecov api instance. This should only be set if you are hosting the api container externally.
+  api_allowed_hosts: []          # (optional) list of urls that the api allows access on. This defaults to the codecov_url and should only be set if the codecov_api_url is set.
   enterprise_license: null       # (required) provided by Codecov staff
   encryption_secret: null        # used to encrypt user oauth tokens (do not chnage once set, will require all uses to log in/out to reset tokens)
   guest_access: false            # allow non-logged in users to view public repos

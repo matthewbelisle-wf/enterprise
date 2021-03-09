@@ -31,13 +31,13 @@ These docs and examples are for v4.6.0 and higher. If you are using v4.5.* pleas
 - **Company icon/logo** https://github.com/codecov/media/tree/master/logos
 - **Product icon/logo** https://github.com/codecov/media/tree/master/logos
 - **Support link** https://codecov.io/support
-- **License link** https://codecov.io/eula
+- **License link** https://about.codecov.io/eula
 - **Screenshots**
 - **Search tags** code coverage, static analysis, dev-ops, continuous integration, software development, developer tools
 
 [config]: http://docs.codecov.io/docs/configuration
 [email]: mailto:enterprise@codecov.io
-[eula]: https://codecov.io/eula
+[eula]: https://about.codecov.io/eula
 
 
 ## License
