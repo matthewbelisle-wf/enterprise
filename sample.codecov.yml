@@ -16,7 +16,7 @@ setup:
 
 services:
   database_url: null            # (required) postgres url [may leave empty for when using Docker]
-  redis_url: null               # (required) used for celery and storing reports before processing [may leave empty for when using Docker]
+  redis_url: null               # (required) used for celery and storing reports before processing
   rabbitmq_url: null            # specify to use a rabbitmq as the celery broker
   google_analytics_key: null    # front-end tracking
   ci_providers: null            # list of ci domains to check GitHub Status target urls against, ex: "- jenkins.my-company.com"
