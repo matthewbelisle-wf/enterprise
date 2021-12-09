@@ -29,6 +29,10 @@ github:
   client_secret: null           # (required) from https://github.com/settings/applications/new
   organizations: null           # List of organizations. Users must be a member of at least one. (optional) (default all)
   global_upload_token: null     # a secret string that is used as a global token for uploading reports
+  webhook_secret: null          # (optional) used to specify the webhook secret when creating a GitHub App Integration. https://docs.codecov.com/docs/how-to-create-a-github-app-for-codecov-enterprise
+  integration:                  # (optional) settings block for the github app integration. https://docs.codecov.com/docs/how-to-create-a-github-app-for-codecov-enterprise
+    id: int                        # App ID value shown on your integration's page in GitHub
+    pem: /path/to/file.pem         # path to the pem file you created in the `web` and `worker` containers.
 
 # Github Enterprise
 # ---------------------------------
@@ -40,6 +44,10 @@ github_enterprise:
   api_url: null                 # (optional) the base url of your GitHub Enterprise API defaults to `url + "/api/v3"`
   verify_ssl: null              # (optiona) if false: will not verify server ssl certificate
   ssl_pem: null                 # (optiona) SSL CA cacert.pem used when making http requests with GitHub
+  webhook_secret: null          # (optional) used to specify the webhook secret when creating a GitHub App Integration. https://docs.codecov.com/docs/how-to-create-a-github-app-for-codecov-enterprise
+  integration:                  # (optional) settings block for the github app integration. https://docs.codecov.com/docs/how-to-create-a-github-app-for-codecov-enterprise
+    id: int                        # App ID value shown on your integration's page in GitHub
+    pem: /path/to/file.pem         # path to the pem file you created in the `web` and `worker` containers.
 
 # Bitbucket
 # ---------------------------------
