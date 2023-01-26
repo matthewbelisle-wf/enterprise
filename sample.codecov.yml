@@ -13,9 +13,11 @@ setup:
   loglvl: INFO                   # INFO, DEBUG or WARNING
   cookie_secret: null            # (required) string used to encrypt secure cookies
   expire_user_cookies_days: 365  # number of days cookies are valid for
-
+  timeseries:
+    enabled: false               # Enable/Disable timeseries feature for use with Flags V2
 services:
   database_url: null            # (required) postgres url [may leave empty for when using Docker]
+  timeseries_database_url: null # (required if using timeseries feature) postgres url for timeseries database
   redis_url: null               # (required) used for celery and storing reports before processing
   rabbitmq_url: null            # specify to use a rabbitmq as the celery broker
   google_analytics_key: null    # front-end tracking
