@@ -25,6 +25,7 @@ services:
       - CODECOV_API_HOST=localhost:8080
       - CODECOV_IA_HOST=localhost:8080
       - CODECOV_SCHEME=http
+      # TODO: Fix secure cookie flag
     volumes:
       - ./config:/config
     ports:
